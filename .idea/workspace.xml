@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d6e7c76-80df-4731-af3e-9b49745ce405" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/additional/ArraySum.java" afterDir="false" />
+    <list default="true" id="4d6e7c76-80df-4731-af3e-9b49745ce405" name="Changes" comment="new code added">
+      <change afterPath="$PROJECT_DIR$/src/main/java/additional/HashMapSort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/HashMapSortTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/FactorialCalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/FactorialCalculatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PalindromeCheckerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PalindromeCheckerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SwapWithoutThirdvariableTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SwapWithoutThirdvariableTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,9 +37,12 @@
   "keyToString": {
     "Application.ArraySum.executor": "Run",
     "Application.FactorialCalculator.executor": "Run",
+    "Application.HashMapSort.executor": "Run",
     "Application.PalindromeChecker.executor": "Run",
     "Application.SwapWithoutThirdVariable.executor": "Run",
+    "JUnit.ArraySumTest.executor": "Run",
     "JUnit.FactorialCalculatorTest.executor": "Run",
+    "JUnit.HashMapSortTest.executor": "Run",
     "JUnit.PalindromeCheckerTest.executor": "Run",
     "JUnit.SwapWithoutThirdVariableTest.executor": "Run",
     "JUnit.SwapWithoutThirdvariableTest.executor": "Run",
@@ -70,6 +70,19 @@
       <option name="presentableId" value="Default" />
       <updated>1706822138234</updated>
     </task>
+    <task id="LOCAL-00001" summary="new code added">
+      <option name="closed" value="true" />
+      <created>1706911688872</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1706911688873</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="new code added" />
+    <option name="LAST_COMMIT_MESSAGE" value="new code added" />
   </component>
 </project>
