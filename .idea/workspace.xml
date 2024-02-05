@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d6e7c76-80df-4731-af3e-9b49745ce405" name="Changes" comment="new code added">
-      <change afterPath="$PROJECT_DIR$/src/main/java/additional/HashMapSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/HashMapSortTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lamdba/AverageOfSquares.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lamdba/CapitalizeAndSort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lamdba/CountVowels.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lamdba/SortStrings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lamdba/SortStringsByLength.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lamdba/SortStringsByLengthAndLastChar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/AverageOfSquaresTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,9 +41,16 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.ArraySum.executor": "Run",
+    "Application.AverageOfSquares.executor": "Run",
+    "Application.Capitalize.executor": "Run",
+    "Application.CapitalizeAndSort.executor": "Run",
+    "Application.CountVowels.executor": "Run",
     "Application.FactorialCalculator.executor": "Run",
     "Application.HashMapSort.executor": "Run",
     "Application.PalindromeChecker.executor": "Run",
+    "Application.SortStrings.executor": "Run",
+    "Application.SortStringsByLength.executor": "Run",
+    "Application.SortStringsByLengthAndLastChar.executor": "Run",
     "Application.SwapWithoutThirdVariable.executor": "Run",
     "JUnit.ArraySumTest.executor": "Run",
     "JUnit.FactorialCalculatorTest.executor": "Run",
@@ -54,6 +66,31 @@
     "kotlin-language-version-configured": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="lamdba" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="CountVowels" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="lamdba.CountVowels" />
+      <module name="Java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lamdba.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.CountVowels" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
