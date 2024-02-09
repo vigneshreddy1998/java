@@ -1,3 +1,4 @@
+package additional;
 
 import additional.StringRotation;
 import org.junit.jupiter.api.Test;

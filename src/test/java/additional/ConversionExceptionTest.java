@@ -1,3 +1,5 @@
+package additional;
+
 import additional.ConversionException;
 
 import static org.junit.Assert.assertEquals;

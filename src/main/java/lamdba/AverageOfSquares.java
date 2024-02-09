@@ -2,7 +2,7 @@ package lamdba;
 import java.util.Arrays;
 
 public class AverageOfSquares{
-    public static double averageOfSquares() {//main(String[] args) {
+    public static double averageOfSquares(int[] inputArray) {//main(String[] args) {
         Integer[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
         double averageOfSquares = (double)Arrays.stream(numbers)
@@ -14,4 +14,4 @@ public class AverageOfSquares{
         System.out.println("Average of squares of odd numbers: " + averageOfSquares);
         return averageOfSquares;
     }
-}
+

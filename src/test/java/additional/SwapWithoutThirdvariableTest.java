@@ -1,3 +1,5 @@
+package additional;
+
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import additional.SwapWithoutThirdVariable;

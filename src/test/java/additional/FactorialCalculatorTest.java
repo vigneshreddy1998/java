@@ -1,3 +1,5 @@
+package additional;
+
 import org.junit.Test;
 import additional.FactorialCalculator;
 

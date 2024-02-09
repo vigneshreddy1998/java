@@ -1,3 +1,5 @@
+package additional;
+
 import org.junit.Test;
 import additional.ArraySum;
 import static org.junit.Assert.assertEquals;

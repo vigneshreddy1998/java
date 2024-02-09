@@ -5,25 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d6e7c76-80df-4731-af3e-9b49745ce405" name="Changes" comment="new code added">
-      <change afterPath="$PROJECT_DIR$/src/main/java/additional/ArrayListReverser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/additional/CaseConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/additional/ConversionException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/additional/RepeatedCharacters.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/additional/RepeatedDigits.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/additional/StringRotation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/additional/UniqueWords.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lamdba/FilterAndDoubleOddNumbers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ArrayListReverserTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/CaseConverterTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ConversionExceptionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/RepeatedCharactersTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/RepeatedDigitsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/StringRotationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/UniqueWordsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lamdba/Addition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lamdba/GroupByLength.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lamdba/MaxElementStringList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lamdba/RemoveDuplicates.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lamdba/StringFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lamdba/StringSorting.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lamdba/SumOfSquares.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/threads/Deadlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/threads/Singleton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/threads/TwoThreads.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/lamdba/AdditionTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/lamdba/AverageOfSquaresTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/lamdba/CountVowelsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/lamdba/GroupByLengthTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/lamdba/MaxElementStringListTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/lamdba/RemoveDuplicatesTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/lamdba/StringFilterTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/lamdba/StringSortingTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/lamdba/SumOfSquaresTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lamdba/AverageOfSquares.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lamdba/AverageOfSquares.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/AverageOfSquaresTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lamdba/SortStrings.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lamdba/SortStringsByLength.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lamdba/SortStringsByLengthAndLastChar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ArrayListReverserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/additional/ArrayListReverserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ArraySumTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/additional/ArraySumTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/CaseConverterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/additional/CaseConverterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ConversionExceptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/additional/ConversionExceptionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/FactorialCalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/additional/FactorialCalculatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/HashMapSortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/additional/HashMapSortTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/PalindromeCheckerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/additional/PalindromeCheckerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/RepeatedCharactersTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/additional/RepeatedCharactersTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/RepeatedDigitsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/additional/RepeatedDigitsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/StringRotationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/additional/StringRotationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/SwapWithoutThirdvariableTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/additional/SwapWithoutThirdvariableTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/UniqueWordsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/additional/UniqueWordsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,11 +69,13 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Addition.executor": "Run",
     "Application.ArraySum.executor": "Run",
     "Application.AverageOfSquares.executor": "Run",
     "Application.Capitalize.executor": "Run",
     "Application.CapitalizeAndSort.executor": "Run",
     "Application.CountVowels.executor": "Run",
+    "Application.Deadlock.executor": "Run",
     "Application.FactorialCalculator.executor": "Run",
     "Application.HashMapSort.executor": "Run",
     "Application.PalindromeChecker.executor": "Run",
@@ -63,8 +83,10 @@
     "Application.SortStringsByLength.executor": "Run",
     "Application.SortStringsByLengthAndLastChar.executor": "Run",
     "Application.SwapWithoutThirdVariable.executor": "Run",
+    "JUnit.AdditionTest.executor": "Run",
     "JUnit.ArraySumTest.executor": "Run",
     "JUnit.AverageOfSquaresTest.executor": "Run",
+    "JUnit.CapitalizeAndSortTest.executor": "Run",
     "JUnit.CaseConverterTest.executor": "Run",
     "JUnit.FactorialCalculatorTest.executor": "Run",
     "JUnit.HashMapSortTest.executor": "Run",
@@ -72,6 +94,7 @@
     "JUnit.StringRotationTest.executor": "Run",
     "JUnit.SwapWithoutThirdVariableTest.executor": "Run",
     "JUnit.SwapWithoutThirdvariableTest.executor": "Run",
+    "JUnit.UniqueWordsTest.executor": "Run",
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -81,6 +104,11 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="additional" />
+      <recent name="lamdba" />
+      <recent name="jav" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="lamdba" />
     </key>
@@ -145,7 +173,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707168719965</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="new code added">
+      <option name="closed" value="true" />
+      <created>1707415449130</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1707415449131</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
