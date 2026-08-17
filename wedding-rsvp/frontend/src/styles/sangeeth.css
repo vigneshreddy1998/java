@@ -1,0 +1,467 @@
+/* Sangeeth Night — "music player" RSVP experience.
+   Scoped entirely under .sangeeth-page so it never bleeds into the rest of
+   the site (which uses the paper/wine invitation theme in tokens.css). */
+
+.sangeeth-page {
+  --sg-bg: #0c0b10;
+  --sg-ink: #ffffff;
+  --sg-ink-soft: rgba(255, 255, 255, 0.65);
+  --sg-grad: linear-gradient(135deg, #ff5f7e 0%, #ff9a5a 45%, #7b5cff 100%);
+  --sg-gold: #f2c46d;
+  --sg-font-display: 'Poppins', sans-serif;
+  --sg-font-body: 'Jost', -apple-system, sans-serif;
+
+  min-height: 100vh;
+  margin: 0;
+  background: radial-gradient(circle at 50% 0%, #241c33 0%, var(--sg-bg) 60%);
+  color: var(--sg-ink);
+  font-family: var(--sg-font-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 20px;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.sangeeth-page *,
+.sangeeth-page *::before,
+.sangeeth-page *::after {
+  box-sizing: border-box;
+}
+
+/* Reset the paper-theme's h1/h2/h3 color+weight (global.css) so headings
+   here inherit the dark theme's white ink instead of the invitation navy. */
+.sangeeth-page h1,
+.sangeeth-page h2 {
+  color: inherit;
+  margin: 0;
+  font-weight: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sangeeth-page * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.sangeeth-page .player {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.sangeeth-page .screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sangeeth-page .screen.active {
+  display: flex;
+  animation: sgScreenIn 0.45s ease;
+}
+
+@keyframes sgScreenIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sangeeth-page .eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--sg-gold);
+  margin: 0 0 26px;
+  font-weight: 600;
+}
+
+.sangeeth-page .album-wrap {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 34px;
+}
+
+.sangeeth-page .album-wrap.small {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 22px;
+}
+
+.sangeeth-page .album-art {
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 20px 60px -15px rgba(255, 80, 120, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.sangeeth-page .album-art.spinning {
+  border-radius: 50%;
+  animation: sgSpin 6s linear infinite;
+}
+
+@keyframes sgSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sangeeth-page .play-fab {
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--sg-grad);
+  border: 4px solid var(--sg-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  animation: sgPulse 2.2s ease infinite;
+}
+
+@keyframes sgPulse {
+  0%,
+  100% {
+    box-shadow: 0 8px 30px -6px rgba(255, 95, 126, 0.6);
+  }
+  50% {
+    box-shadow: 0 8px 42px -4px rgba(255, 95, 126, 0.95);
+  }
+}
+
+.sangeeth-page .play-fab:focus-visible {
+  outline: 2px solid var(--sg-gold);
+  outline-offset: 3px;
+}
+
+.sangeeth-page .play-icon {
+  margin-left: 3px;
+}
+
+.sangeeth-page .tap-hint {
+  margin-top: 44px;
+  font-size: 13px;
+  color: var(--sg-ink-soft);
+  letter-spacing: 0.03em;
+}
+
+.sangeeth-page .track-label {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--sg-gold);
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+
+.sangeeth-page .track-title {
+  font-family: var(--sg-font-display);
+  font-weight: 800;
+  font-size: clamp(26px, 7vw, 32px);
+  margin: 0 0 12px;
+}
+
+.sangeeth-page .track-meta {
+  font-size: 13px;
+  color: var(--sg-ink-soft);
+  margin: 0 0 4px;
+}
+
+.sangeeth-page .progress-track {
+  width: 100%;
+  max-width: 260px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  margin: 28px auto 12px;
+  overflow: hidden;
+}
+
+.sangeeth-page .progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--sg-grad);
+  border-radius: 2px;
+  transition: width 2.4s linear;
+}
+
+.sangeeth-page .skip-link {
+  background: none;
+  border: none;
+  color: var(--sg-ink-soft);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 16px;
+  padding: 6px;
+}
+
+.sangeeth-page .skip-link:focus-visible {
+  outline: 2px solid var(--sg-gold);
+  outline-offset: 2px;
+}
+
+.sangeeth-page .question-pre {
+  font-size: 14px;
+  color: var(--sg-ink-soft);
+  margin: 0 0 10px;
+}
+
+.sangeeth-page .question-main {
+  font-family: var(--sg-font-display);
+  font-weight: 800;
+  font-size: clamp(30px, 8vw, 40px);
+  margin: 0 0 36px;
+}
+
+.sangeeth-page .question-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.sangeeth-page .btn-primary {
+  background: var(--sg-grad);
+  color: #fff;
+  border: none;
+  font-family: var(--sg-font-body);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 16px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: transform 0.15s ease;
+}
+
+.sangeeth-page .btn-primary:hover {
+  transform: translateY(-1px);
+}
+
+.sangeeth-page .btn-primary:active {
+  transform: translateY(1px);
+}
+
+.sangeeth-page .btn-primary.full {
+  width: 100%;
+}
+
+.sangeeth-page .btn-primary:focus-visible {
+  outline: 2px solid var(--sg-gold);
+  outline-offset: 2px;
+}
+
+.sangeeth-page .btn-primary:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+}
+
+.sangeeth-page .btn-secondary {
+  background: transparent;
+  color: var(--sg-ink);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-family: var(--sg-font-body);
+  font-weight: 500;
+  font-size: 15px;
+  padding: 15px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.sangeeth-page .btn-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sangeeth-page .btn-secondary.full {
+  width: 100%;
+}
+
+.sangeeth-page .btn-secondary:focus-visible {
+  outline: 2px solid var(--sg-gold);
+  outline-offset: 2px;
+}
+
+.sangeeth-page .btn-secondary:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.sangeeth-page form {
+  width: 100%;
+  text-align: left;
+}
+
+.sangeeth-page .form-title {
+  font-family: var(--sg-font-display);
+  font-weight: 700;
+  font-size: 22px;
+  text-align: center;
+  margin: 0 0 28px;
+}
+
+.sangeeth-page .sg-field {
+  margin-bottom: 20px;
+}
+
+.sangeeth-page .sg-field label {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sg-ink-soft);
+  margin-bottom: 8px;
+}
+
+.sangeeth-page input[type='text'],
+.sangeeth-page textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 13px 14px;
+  color: #fff;
+  font-family: var(--sg-font-body);
+  font-size: 15px;
+  resize: vertical;
+}
+
+.sangeeth-page input[type='text']::placeholder,
+.sangeeth-page textarea::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.sangeeth-page input[type='text']:focus-visible,
+.sangeeth-page textarea:focus-visible {
+  outline: 2px solid var(--sg-gold);
+  outline-offset: 1px;
+  border-color: var(--sg-gold);
+}
+
+.sangeeth-page input.sg-field-invalid {
+  border-color: #ff5f7e;
+}
+
+.sangeeth-page .stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.sangeeth-page .step-btn {
+  width: 42px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.06);
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.sangeeth-page .step-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.sangeeth-page .step-btn:focus-visible {
+  outline: 2px solid var(--sg-gold);
+  outline-offset: -2px;
+}
+
+.sangeeth-page .step-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.sangeeth-page .party-size-display {
+  display: inline-block;
+  min-width: 46px;
+  text-align: center;
+  font-size: 15px;
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 10px 0;
+}
+
+.sangeeth-page .chip-group {
+  display: flex;
+  gap: 10px;
+}
+
+.sangeeth-page .chip {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.sangeeth-page .chip.active {
+  background: var(--sg-grad);
+  border-color: transparent;
+  font-weight: 600;
+}
+
+.sangeeth-page .chip:focus-visible {
+  outline: 2px solid var(--sg-gold);
+  outline-offset: 2px;
+}
+
+.sangeeth-page .error {
+  color: #ff8a8a;
+  font-size: 13px;
+  margin: -8px 0 16px;
+}
+
+.sangeeth-page .confirm-title {
+  font-family: var(--sg-font-display);
+  font-weight: 800;
+  font-size: clamp(26px, 7vw, 32px);
+  letter-spacing: 0.01em;
+  margin: 0 0 18px;
+}
+
+.sangeeth-page .confirm-sub {
+  font-size: 15px;
+  color: var(--sg-ink-soft);
+  line-height: 1.7;
+  max-width: 300px;
+}
+
+.sangeeth-page .home-link {
+  display: inline-block;
+  margin-top: 40px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sg-ink-soft);
+  text-decoration: none;
+}
+
+.sangeeth-page .home-link:hover {
+  color: var(--sg-ink);
+}
