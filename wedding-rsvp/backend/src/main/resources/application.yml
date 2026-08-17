@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    open-in-view: false
+  jackson:
+    default-property-inclusion: non_null
+
+server:
+  port: ${PORT:8080}
+
+app:
+  # Secret header value the /api/admin/** endpoints require. Set this as an
+  # env var in Railway - do not commit a real value.
+  admin-key: ${ADMIN_KEY:change-me}
+  # Comma-separated list of allowed origins for CORS, e.g. your Vercel URL.
+  frontend-origin: ${FRONTEND_ORIGIN:http://localhost:5173}

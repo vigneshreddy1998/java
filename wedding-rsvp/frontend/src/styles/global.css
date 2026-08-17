@@ -1,0 +1,191 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(28, 42, 68, 0.035), transparent 40%),
+    radial-gradient(circle at 85% 90%, rgba(124, 45, 60, 0.04), transparent 40%);
+  color: var(--charcoal);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  margin: 0;
+  font-weight: 500;
+}
+
+a {
+  color: var(--wine);
+}
+
+button {
+  font-family: inherit;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--wine);
+  font-weight: 600;
+}
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-2) var(--space-6);
+}
+
+.divider {
+  display: flex;
+  justify-content: center;
+  color: var(--gold);
+  margin: var(--space-3) 0;
+}
+
+/* ── Wax seal button ─────────────────────────────────────────────── */
+.wax-seal {
+  position: relative;
+  border: none;
+  cursor: pointer;
+  border-radius: 999px;
+  background: radial-gradient(circle at 35% 30%, var(--wine) 0%, var(--wine-deep) 70%);
+  color: var(--white);
+  font-family: var(--font-display);
+  letter-spacing: 0.03em;
+  padding: var(--space-2) var(--space-4);
+  font-size: 1rem;
+  box-shadow: 0 6px 18px rgba(94, 33, 44, 0.35), inset 0 0 0 2px rgba(255, 253, 248, 0.15);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.wax-seal:hover {
+  transform: translateY(-2px) rotate(-0.5deg);
+  box-shadow: 0 10px 24px rgba(94, 33, 44, 0.4), inset 0 0 0 2px rgba(255, 253, 248, 0.2);
+}
+
+.wax-seal:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.wax-seal--lg {
+  padding: var(--space-2) var(--space-5);
+  font-size: 1.1rem;
+}
+
+.wax-seal:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Cards ────────────────────────────────────────────────────────── */
+.card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  box-shadow: var(--shadow-card);
+}
+
+/* ── Forms ────────────────────────────────────────────────────────── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: var(--space-2);
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--charcoal-soft);
+}
+
+.field input,
+.field select,
+.field textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 12px 14px;
+  border: 1px solid var(--paper-deep);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  color: var(--charcoal);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: 2px solid var(--wine);
+  outline-offset: 1px;
+}
+
+.field-error {
+  color: var(--wine);
+  font-size: 0.82rem;
+}
+
+.attend-toggle {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.attend-toggle button {
+  flex: 1;
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--paper-deep);
+  background: var(--white);
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--charcoal-soft);
+  transition: all 150ms ease;
+}
+
+.attend-toggle button.active-yes {
+  border-color: var(--sage);
+  background: rgba(124, 139, 108, 0.12);
+  color: var(--sage);
+}
+
+.attend-toggle button.active-no {
+  border-color: var(--wine);
+  background: rgba(124, 45, 60, 0.08);
+  color: var(--wine);
+}
+
+.banner {
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-2);
+  font-size: 0.92rem;
+}
+
+.banner--error {
+  background: rgba(124, 45, 60, 0.08);
+  color: var(--wine-deep);
+  border: 1px solid rgba(124, 45, 60, 0.25);
+}
