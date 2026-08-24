@@ -9,6 +9,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class DataSeeder implements CommandLineRunner {
 
@@ -33,7 +35,8 @@ public class DataSeeder implements CommandLineRunner {
                 eventRepository.save(WeddingEvent.builder()
                         .type(EventType.WEDDING)
                         .name("The Wedding")
-                        .venue("TBD")
+                        .date(LocalDateTime.of(2026, 11, 15, 10, 0))
+                        .venue("Charlotte, NC — venue TBA")
                         .dressCode("Formal")
                         .build()));
 
@@ -41,7 +44,7 @@ public class DataSeeder implements CommandLineRunner {
                 eventRepository.save(WeddingEvent.builder()
                         .type(EventType.SANGEET)
                         .name("Sangeet Night")
-                        .venue("TBD")
+                        .venue("Charlotte, NC")
                         .dressCode("Festive / Indian formal")
                         .build()));
 

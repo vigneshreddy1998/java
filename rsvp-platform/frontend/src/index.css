@@ -12,4 +12,56 @@
   h1, h2, h3 {
     @apply font-display;
   }
+  :focus-visible {
+    outline: 2px solid theme('colors.gold.400');
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Scroll-reveal: paired with the useScrollReveal hook, which toggles .in-view
+     when the element crosses the viewport threshold. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Arch-shaped card mask, used for the event cards on the home page. */
+  .mask-arch {
+    --arch-path: path('M0,400 L0,160 C0,95 45,55 95,38 C115,30 132,16 150,0 C168,16 185,30 205,38 C255,55 300,95 300,160 L300,400 Z');
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Cpath d='M0,400 L0,160 C0,95 45,55 95,38 C115,30 132,16 150,0 C168,16 185,30 205,38 C255,55 300,95 300,160 L300,400 Z' fill='white'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Cpath d='M0,400 L0,160 C0,95 45,55 95,38 C115,30 132,16 150,0 C168,16 185,30 205,38 C255,55 300,95 300,160 L300,400 Z' fill='white'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
+  /* Subtle film-grain overlay for photo placeholders, so empty slots don't look
+     like flat rectangles once real photos are dropped in. */
+  .texture-noise {
+    position: relative;
+    overflow: hidden;
+  }
+  .texture-noise::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+  }
 }

@@ -70,7 +70,7 @@ export default function Sangeet() {
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-16">
-      <h1 className="text-4xl font-display text-maroon-500 text-center mb-2">{event?.name || 'Sangeet Night'}</h1>
+      <h1 className="text-4xl font-display text-sangeet-500 text-center mb-2">{event?.name || 'Sangeet Night'}</h1>
       {event?.venue && <p className="text-center text-ink/60 mb-1">{event.venue}</p>}
       {event?.date && (
         <p className="text-center text-ink/60 mb-1">
@@ -94,7 +94,7 @@ export default function Sangeet() {
                     onClick={() => handleRsvp(guest, 'ACCEPTED')}
                     className={`px-3 py-1.5 rounded-lg text-xs font-medium border ${
                       existing?.status === 'ACCEPTED'
-                        ? 'bg-maroon-500 text-ivory border-maroon-500'
+                        ? 'bg-sangeet-500 text-ivory border-sangeet-500'
                         : 'border-gold-300/60'
                     }`}
                   >
@@ -105,7 +105,7 @@ export default function Sangeet() {
                     onClick={() => handleRsvp(guest, 'DECLINED')}
                     className={`px-3 py-1.5 rounded-lg text-xs font-medium border ${
                       existing?.status === 'DECLINED'
-                        ? 'bg-maroon-500 text-ivory border-maroon-500'
+                        ? 'bg-ink text-ivory border-ink'
                         : 'border-gold-300/60'
                     }`}
                   >
@@ -119,7 +119,7 @@ export default function Sangeet() {
       )}
 
       <section>
-        <h2 className="text-2xl font-display text-center mb-2">Claim a performance song</h2>
+        <h2 className="text-2xl font-display text-sangeet-500 text-center mb-2">Claim a performance song</h2>
         <p className="text-center text-ink/60 text-sm mb-8">
           Pick a song to perform &mdash; once it's claimed, it's locked in for that family.
         </p>

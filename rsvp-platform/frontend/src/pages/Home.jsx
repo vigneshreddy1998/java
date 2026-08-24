@@ -1,22 +1,24 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Countdown from '../components/Countdown.jsx'
+import HeroSlot from '../components/HeroSlot.jsx'
+import EventArchCard from '../components/EventArchCard.jsx'
 import { api } from '../api/client.js'
 import { siteConfig } from '../config/siteConfig.js'
 
 export default function Home() {
-  const [weddingEvent, setWeddingEvent] = useState(null)
+  const [events, setEvents] = useState(null)
   const [code, setCode] = useState('')
   const navigate = useNavigate()
 
   useEffect(() => {
     api
       .getEvents()
-      .then((events) => setWeddingEvent(events.find((e) => e.type === 'WEDDING')))
-      .catch(() => setWeddingEvent(null))
+      .then(setEvents)
+      .catch(() => setEvents([])) // backend unreachable — cards fall back to config defaults below
   }, [])
 
-  const targetDate = weddingEvent?.date || siteConfig.weddingDateFallback
+  const wedding = events?.find((e) => e.type === 'WEDDING')
+  const sangeet = events?.find((e) => e.type === 'SANGEET')
 
   function lookupInvite(e) {
     e.preventDefault()
@@ -25,24 +27,32 @@ export default function Home() {
 
   return (
     <div>
-      <section className="max-w-3xl mx-auto text-center px-6 pt-20 pb-16">
-        <p className="uppercase tracking-[0.3em] text-gold-500 text-xs mb-4">Together with our families</p>
-        <h1 className="text-4xl sm:text-6xl font-display text-maroon-500 mb-6">{siteConfig.coupleNames}</h1>
-        <p className="text-ink/70 max-w-xl mx-auto mb-10">{siteConfig.story}</p>
+      <HeroSlot coupleNames={siteConfig.coupleNames} />
 
-        <Countdown targetDate={targetDate} />
-
-        {weddingEvent?.venue && (
-          <p className="mt-10 text-sm text-ink/60">
-            {weddingEvent.venue}
-            {weddingEvent.date && ` · ${new Date(weddingEvent.date).toLocaleDateString(undefined, {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}`}
-          </p>
-        )}
+      <section id="events" className="text-center pt-16 pb-2 px-6">
+        <p className="text-[11px] uppercase tracking-[0.14em] font-bold text-gold-500 mb-2.5">As you scroll</p>
+        <h2 className="font-accent italic text-3xl sm:text-4xl">Two nights, each on its own card</h2>
       </section>
+
+      <div className="flex justify-center gap-6 flex-wrap px-6 py-8 pb-24">
+        <EventArchCard
+          name={wedding?.name || 'The Wedding'}
+          date={wedding?.date || siteConfig.weddingDateFallback}
+          venue={wedding?.venue || siteConfig.weddingVenueFallback}
+          dressCode={wedding?.dressCode}
+          accent="wed"
+          photoLabel="Wedding — photo"
+        />
+        <EventArchCard
+          name={sangeet?.name || 'Sangeet Night'}
+          date={sangeet?.date || null}
+          venue={sangeet?.venue || siteConfig.weddingVenueFallback}
+          dressCode={sangeet?.dressCode}
+          accent="sangeet"
+          photoLabel="Sangeet — photo"
+          delayMs={120}
+        />
+      </div>
 
       <section className="bg-parchment/60 py-14">
         <div className="max-w-md mx-auto px-6 text-center">
@@ -56,6 +66,7 @@ export default function Home() {
               placeholder="Invite code"
               value={code}
               onChange={(e) => setCode(e.target.value)}
+              aria-label="Invite code"
             />
             <button className="px-5 py-3 rounded-lg bg-maroon-500 text-ivory font-medium text-sm">
               Go
@@ -63,6 +74,17 @@ export default function Home() {
           </form>
         </div>
       </section>
+
+      <footer className="text-center px-6 pt-5 pb-16">
+        <div className="w-14 h-px bg-gold-400 mx-auto mb-4" />
+        <p className="text-xs uppercase tracking-[0.1em] text-ink/40">
+          {siteConfig.coupleNames} — {new Date(siteConfig.weddingDateFallback).toLocaleDateString(undefined, {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </p>
+      </footer>
     </div>
   )
 }

@@ -32,7 +32,7 @@ export default function SongCard({ song, onClaim, claiming }) {
         <button
           onClick={() => onClaim(song.id)}
           disabled={claiming}
-          className="mt-auto py-2 rounded-lg bg-maroon-500 text-ivory text-sm font-medium disabled:opacity-50"
+          className="mt-auto py-2 rounded-lg bg-sangeet-500 text-ivory text-sm font-medium disabled:opacity-50"
         >
           {claiming ? 'Claiming...' : 'Claim this song'}
         </button>
