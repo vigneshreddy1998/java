@@ -1,0 +1,37 @@
+server:
+  port: ${PORT:8081}
+
+spring:
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/rsvp_platform}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:postgres}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+
+app:
+  frontend-origin: ${FRONTEND_ORIGIN:http://localhost:5173}
+  jwt:
+    secret: ${JWT_SECRET:change-this-dev-secret-change-this-dev-secret}
+    expiration-minutes: ${JWT_EXPIRATION_MINUTES:720}
+  admin:
+    bootstrap-username: ${ADMIN_BOOTSTRAP_USERNAME:admin}
+    bootstrap-password: ${ADMIN_BOOTSTRAP_PASSWORD:changeme123}
+  llm:
+    provider: ${LLM_PROVIDER:anthropic}
+    api-key: ${ANTHROPIC_API_KEY:}
+    model: ${LLM_MODEL:claude-sonnet-5}
+    base-url: ${LLM_BASE_URL:https://api.anthropic.com/v1/messages}
+
+logging:
+  level:
+    com.wedding.rsvpplatform: INFO
