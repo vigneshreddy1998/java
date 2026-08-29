@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #FAF8F5; color: #1B1512;
+           font-family: "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #A11F35; text-decoration: none; }
+    a:hover { color: #7D1729; }
+    .cap { font-size: 10.5px; letter-spacing: 0.13em; text-transform: uppercase;
+           font-weight: 700; color: #8A6C17; margin: 0 0 4px; }
+    .why { font-size: 12.5px; color: #5B5049; margin: 0 0 14px; line-height: 1.5; }
+    .card { background: #FFFFFF; border: 1px solid rgba(227,202,133,0.5); border-radius: 14px;
+            padding: 26px; }
+  </style>
+</helmet>
+
+<div style="width: 1180px; background: #FAF8F5; padding: 46px 48px 54px;">
+
+  <header style="margin-bottom: 36px;">
+    <h1 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 34px; letter-spacing: -0.025em; margin: 0 0 10px;">States</h1>
+    <p style="font-size: 15px; color: #5B5049; margin: 0; max-width: 74ch;">
+      The screens that already exist in the code but had no design. Each one is a moment where a
+      guest is confused or blocked, so the wording matters more than the layout.
+    </p>
+  </header>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px;">
+
+    <!-- 1. Number not recognised -->
+    <div>
+      <p class="cap">Verify · number not recognised</p>
+      <p class="why">
+        Deliberately vague. Confirming a number is <em>not</em> on the list would let anyone probe
+        who was invited — and reveal that a private event exists.
+      </p>
+      <div class="card" style="text-align: center;">
+        <div style="width: 44px; height: 44px; border-radius: 50%; background: #FBEFF1; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A11F35" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 7.5v5M12 16v.5" stroke-linecap="round"/></svg>
+        </div>
+        <p style="font-size: 16px; font-weight: 600; margin: 0 0 8px;">We couldn't match that number</p>
+        <p style="font-size: 14px; color: #5B5049; margin: 0 0 18px; line-height: 1.6;">
+          Check for a typo and try again — with or without the country code, either works.
+        </p>
+        <div style="border: 1px solid rgba(27,21,18,0.16); border-radius: 10px; padding: 13px 15px; font-size: 15px; color: rgba(27,21,18,0.32); text-align: left;">+1 704 555 0000</div>
+        <div style="background: #A11F35; color: #FFFFFF; border-radius: 10px; min-height: 46px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600; margin-top: 12px;">Try again</div>
+        <p style="font-size: 12.5px; color: rgba(27,21,18,0.45); margin: 16px 0 0;">
+          Still stuck? Message us and we'll sort it out.
+        </p>
+      </div>
+    </div>
+
+    <!-- 2. Rate limited -->
+    <div>
+      <p class="cap">Verify · too many attempts</p>
+      <p class="why">
+        Fires after five failures from one place. Names the wait so the guest knows it will pass,
+        without explaining the rule in a way that helps anyone work around it.
+      </p>
+      <div class="card" style="text-align: center;">
+        <div style="width: 44px; height: 44px; border-radius: 50%; background: #FCF3E3; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B5670A" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 7v5.4l3.4 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p style="font-size: 16px; font-weight: 600; margin: 0 0 8px;">Let's slow down a moment</p>
+        <p style="font-size: 14px; color: #5B5049; margin: 0 0 18px; line-height: 1.6;">
+          That's a few tries in a row. Give it about fifteen minutes and try once more.
+        </p>
+        <div style="background: #FAF8F5; border: 1px solid rgba(227,202,133,0.5); border-radius: 10px; padding: 14px; font-size: 13.5px; color: #5B5049;">
+          If the number on your invitation isn't working, message us directly — we'd rather fix it than have you keep guessing.
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Declined -->
+    <div>
+      <p class="cap">RSVP · declined</p>
+      <p class="why">
+        Someone saying no should not get a form that looks like a mistake. Warm, short, and the
+        door stays open — they can change it.
+      </p>
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 13px; margin-bottom: 16px;">
+          <div style="width: 38px; height: 38px; border-radius: 50%; background: #F4EFE6; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5B5049" stroke-width="2" aria-hidden="true"><path d="M20.5 8.5a4.6 4.6 0 0 0-7.9-2.7l-.6.6-.6-.6A4.6 4.6 0 0 0 3.5 8.5c0 5 8.5 10 8.5 10s8.5-5 8.5-10Z" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <p style="font-size: 16px; font-weight: 600; margin: 0 0 2px;">We'll miss you</p>
+            <p style="font-size: 13.5px; color: #5B5049; margin: 0;">Your answer is saved.</p>
+          </div>
+        </div>
+        <p style="font-size: 14px; color: #5B5049; margin: 0 0 18px; line-height: 1.6;">
+          Thank you for letting us know — it genuinely helps with the planning. If things change,
+          come back and update this any time before 1 November.
+        </p>
+        <div style="display: flex; gap: 10px;">
+          <div style="flex-grow: 1; border: 1px solid rgba(27,21,18,0.18); border-radius: 10px; min-height: 46px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500;">Change my answer</div>
+          <div style="flex-grow: 1; border: 1px solid rgba(27,21,18,0.18); border-radius: 10px; min-height: 46px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500;">Back to all events</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. No songs yet -->
+    <div>
+      <p class="cap">Sangeet · song list empty</p>
+      <p class="why">
+        Real on day one, before any songs are loaded. Says when to come back instead of leaving a
+        blank space that reads as broken.
+      </p>
+      <div class="card">
+        <p style="font-size: 16px; font-weight: 600; margin: 0 0 5px;">Pick songs to perform</p>
+        <p style="font-size: 13.5px; color: #5B5049; margin: 0 0 18px;">Choose as many as you like.</p>
+        <div style="border: 1px dashed rgba(27,21,18,0.2); border-radius: 12px; padding: 30px 24px; text-align: center;">
+          <div style="width: 40px; height: 40px; border-radius: 50%; background: #EAF5F0; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px;">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0F6B52" stroke-width="1.9" aria-hidden="true"><path d="M9 18V5l11-2v13" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.6"/><circle cx="17.5" cy="16" r="2.6"/></svg>
+          </div>
+          <p style="font-size: 14.5px; font-weight: 500; margin: 0 0 6px;">The song list isn't up yet</p>
+          <p style="font-size: 13.5px; color: #5B5049; margin: 0; line-height: 1.6;">
+            We're still putting it together. Your RSVP saves without it — come back and pick once
+            we've added them.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu, since the phone nav is a real screen -->
+  <div style="margin-top: 34px;">
+    <p class="cap">Mobile · menu open</p>
+    <p class="why" style="margin-bottom: 16px;">
+      Only the events this guest may see are listed — the menu is built from the same list the
+      server enforces, so a private event never appears here.
+    </p>
+    <div style="width: 390px; border: 1px solid rgba(227,202,133,0.5); border-radius: 14px; overflow: hidden; background: #FFFFFF;">
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; border-bottom: 1px solid rgba(227,202,133,0.4);">
+        <span style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 18px; color: #A11F35;">Akshath &amp; Sonalika</span>
+        <div style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: flex-end;">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#1B1512" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; padding: 8px 20px 16px;">
+        <span style="min-height: 48px; display: flex; align-items: center; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #1B1512; font-weight: 600;">Home</span>
+        <span style="min-height: 48px; display: flex; align-items: center; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(27,21,18,0.65);">The Engagement</span>
+        <span style="min-height: 48px; display: flex; align-items: center; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(27,21,18,0.65);">The Haldi</span>
+        <span style="min-height: 48px; display: flex; align-items: center; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(27,21,18,0.65);">Sangeet Night</span>
+        <span style="min-height: 48px; display: flex; align-items: center; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(27,21,18,0.65);">The Wedding</span>
+        <span style="min-height: 48px; display: flex; align-items: center; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(27,21,18,0.65);">Gallery</span>
+        <span style="min-height: 48px; display: flex; align-items: center; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(27,21,18,0.35); border-top: 1px solid rgba(227,202,133,0.4); margin-top: 6px;">Not you?</span>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

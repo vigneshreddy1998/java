@@ -7,6 +7,10 @@ artboards and published as a design canvas.
 
 ## Files
 
+The canvas has two pages: **Desktop** and **Mobile &amp; states**.
+
+### Desktop
+
 | File | Screen |
 |---|---|
 | `Verify.dc.html` | Phone-number front door — identical for every visitor |
@@ -16,7 +20,23 @@ artboards and published as a design canvas.
 | `Sangeet.dc.html` | Invite-gated: RSVP plus the song picker |
 | `Wedding.dc.html` | RSVP with headcount, companions and meal |
 | `System.dc.html` | Palette, type, controls and the arch motif |
-| `canvas.json` | Artboard layout, titles and canvas notes |
+
+### Mobile &amp; states
+
+Guests arrive from a WhatsApp link, so most will only ever see the phone screens.
+
+| File | Screen |
+|---|---|
+| `MobileHome.dc.html` | Home at 390px — stacked event cards |
+| `MobileWedding.dc.html` | Wedding RSVP at 390px |
+| `MobileSangeet.dc.html` | Sangeet + song picker at 390px — the tightest layout on the site |
+| `States.dc.html` | Number not recognised, rate-limited, declined, empty song list, mobile menu |
+
+`canvas.json` holds the artboard layout, page assignment, titles and canvas notes.
+
+Mobile rules worth keeping: every tap target clears 44px, paired buttons stack rather
+than sit side by side, and song rows give the title, the running time and the overlap
+flag their own lines instead of competing for 390px.
 
 ## Design system
 

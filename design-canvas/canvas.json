@@ -1,38 +1,59 @@
 {
+  "pages": [
+    { "id": "page-1", "name": "Desktop" },
+    { "id": "page-2", "name": "Mobile & states" }
+  ],
   "artboards": [
-    { "file": "Verify.dc.html",     "x": 0,    "y": 0,    "w": 1280, "h": 880,  "title": "1 · Verify identity" },
-    { "file": "Main.dc.html",       "x": 1400, "y": 0,    "w": 1280, "h": 1960, "title": "2 · Home" },
+    { "file": "Verify.dc.html",     "page": "page-1", "x": 0,    "y": 0,    "w": 1280, "h": 880,  "title": "1 · Verify identity" },
+    { "file": "Main.dc.html",       "page": "page-1", "x": 1400, "y": 0,    "w": 1280, "h": 1960, "title": "2 · Home" },
 
-    { "file": "Engagement.dc.html", "x": 0,    "y": 2100, "w": 1280, "h": 1180, "title": "3 · Engagement (info only)" },
-    { "file": "Haldi.dc.html",      "x": 1400, "y": 2100, "w": 1280, "h": 1240, "title": "4 · Haldi (info only)" },
+    { "file": "Engagement.dc.html", "page": "page-1", "x": 0,    "y": 2100, "w": 1280, "h": 1180, "title": "3 · Engagement (info only)" },
+    { "file": "Haldi.dc.html",      "page": "page-1", "x": 1400, "y": 2100, "w": 1280, "h": 1240, "title": "4 · Haldi (info only)" },
 
-    { "file": "Sangeet.dc.html",    "x": 0,    "y": 3480, "w": 1280, "h": 1700, "title": "5 · Sangeet (invited only)" },
-    { "file": "Wedding.dc.html",    "x": 1400, "y": 3480, "w": 1280, "h": 1620, "title": "6 · Wedding" },
+    { "file": "Sangeet.dc.html",    "page": "page-1", "x": 0,    "y": 3480, "w": 1280, "h": 1700, "title": "5 · Sangeet (invited only)" },
+    { "file": "Wedding.dc.html",    "page": "page-1", "x": 1400, "y": 3480, "w": 1280, "h": 1620, "title": "6 · Wedding" },
 
-    { "file": "System.dc.html",     "x": 700,  "y": 5320, "w": 1180, "h": 1360, "title": "Design system" }
+    { "file": "System.dc.html",     "page": "page-1", "x": 700,  "y": 5320, "w": 1180, "h": 1360, "title": "Design system" },
+
+    { "file": "MobileHome.dc.html",    "page": "page-2", "x": 0,   "y": 0, "w": 390, "h": 2420, "title": "Home · 390px" },
+    { "file": "MobileWedding.dc.html", "page": "page-2", "x": 490, "y": 0, "w": 390, "h": 1400, "title": "Wedding RSVP · 390px" },
+    { "file": "MobileSangeet.dc.html", "page": "page-2", "x": 980, "y": 0, "w": 390, "h": 1560, "title": "Sangeet + songs · 390px" },
+
+    { "file": "States.dc.html",     "page": "page-2", "x": 1470, "y": 0, "w": 1180, "h": 1560, "title": "States" }
   ],
   "annotations": [
     {
       "id": "flow",
+      "page": "page-1",
       "x": -420,
       "y": 0,
       "w": 330,
       "text": "GUEST JOURNEY\n\nOne shared link. A phone number decides what each guest sees — there is no per-family URL and no password.\n\nThe order below is the order a guest experiences it."
     },
     {
+      "id": "info-only",
+      "page": "page-1",
+      "x": -420,
+      "y": 2100,
+      "w": 330,
+      "text": "INFORMATION ONLY\n\nEngagement and Haldi take no RSVP. Rather than leave the page feeling unfinished, each states plainly that there is nothing to fill in, and spends the space on what guests actually open the page for — the Haldi colour theme."
+    },
+    {
       "id": "gating",
+      "page": "page-1",
       "x": -420,
       "y": 3480,
       "w": 330,
       "text": "THE GATED EVENT\n\nSangeet is the only event that hides. A guest without an invite sees no card, no menu item, and gets a 404 on the URL — enforced server-side, not by omitting the link.\n\nThe other three are open to anyone who verifies."
     },
     {
-      "id": "info-only",
+      "id": "phone-first",
+      "page": "page-2",
       "x": -420,
-      "y": 2100,
+      "y": 0,
       "w": 330,
-      "text": "INFORMATION ONLY\n\nEngagement and Haldi take no RSVP. Rather than leave the page feeling unfinished, each states plainly that there is nothing to fill in, and spends the space on what guests actually open the page for — the Haldi colour theme.'"
+      "text": "PHONE FIRST\n\nGuests arrive from a WhatsApp message, so most will only ever see these three screens.\n\nEvery tap target is at least 44px. Paired buttons stack rather than sit side by side, and the song rows give the title, the meta and the overlap flag their own lines instead of competing for 390px."
     }
   ],
-  "launch": { "view": "canvas" }
+  "launch": { "view": "canvas", "page": "page-2" }
 }
