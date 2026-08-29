@@ -32,12 +32,19 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+                // Wired into Spring Security rather than as a standalone CorsFilter so that
+                // preflight OPTIONS requests — which never carry an Authorization header —
+                // pass before the authorization checks run.
                 .cors(cors -> cors.configurationSource(corsConfigurationSource))
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/admin/auth/login").permitAll()
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                        // The only unauthenticated guest endpoint: exchanging a phone number
+                        // for a session. Everything else below requires that session.
+                        .requestMatchers("/api/verify").permitAll()
+                        .requestMatchers("/api/**").hasRole("GUEST")
                         .anyRequest().permitAll()
                 )
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

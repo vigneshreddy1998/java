@@ -10,27 +10,32 @@ spring:
     hibernate:
       ddl-auto: update
     open-in-view: false
-    properties:
-      hibernate:
-        format_sql: true
   servlet:
     multipart:
-      max-file-size: 5MB
-      max-request-size: 5MB
+      max-file-size: 10MB
+      max-request-size: 10MB
 
 app:
   frontend-origin: ${FRONTEND_ORIGIN:http://localhost:5173}
+  gallery-url: ${GALLERY_URL:}
   jwt:
     secret: ${JWT_SECRET:change-this-dev-secret-change-this-dev-secret}
-    expiration-minutes: ${JWT_EXPIRATION_MINUTES:720}
+    # Admin sessions last a working day; guest sessions are short because the token lives
+    # in memory only and is re-issued on each visit.
+    admin-expiration-minutes: ${JWT_ADMIN_EXPIRATION_MINUTES:720}
+    guest-expiration-minutes: ${JWT_GUEST_EXPIRATION_MINUTES:120}
   admin:
     bootstrap-username: ${ADMIN_BOOTSTRAP_USERNAME:admin}
     bootstrap-password: ${ADMIN_BOOTSTRAP_PASSWORD:changeme123}
   llm:
-    provider: ${LLM_PROVIDER:anthropic}
     api-key: ${ANTHROPIC_API_KEY:}
-    model: ${LLM_MODEL:claude-sonnet-5}
-    base-url: ${LLM_BASE_URL:https://api.anthropic.com/v1/messages}
+    model: ${LLM_MODEL:claude-opus-5}
+  phone:
+    # Region assumed for numbers typed without a country code.
+    default-region: ${PHONE_DEFAULT_REGION:US}
+  rate-limit:
+    max-attempts: ${RATE_LIMIT_MAX_ATTEMPTS:5}
+    window-minutes: ${RATE_LIMIT_WINDOW_MINUTES:15}
 
 logging:
   level:

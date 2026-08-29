@@ -27,19 +27,4 @@ public class Song {
 
     @Column(name = "practice_video_url")
     private String practiceVideoUrl;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "claimed_by_family_id")
-    private Family claimedByFamily;
-
-    @Column(nullable = false)
-    @Builder.Default
-    private boolean locked = false;
-
-    /**
-     * Optimistic-lock guard: combined with the conditional UPDATE ... WHERE claimed_by_family_id
-     * IS NULL in SongRepository, this makes claiming a song safe under concurrent requests.
-     */
-    @Version
-    private Long version;
 }

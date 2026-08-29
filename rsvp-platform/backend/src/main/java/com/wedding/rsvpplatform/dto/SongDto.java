@@ -6,6 +6,6 @@ public record SongDto(
         UUID id,
         String title,
         String practiceVideoUrl,
-        boolean locked,
-        String claimedByFamilyName
+        /** Whether the currently verified guest has picked this one. */
+        boolean pickedByMe
 ) {}

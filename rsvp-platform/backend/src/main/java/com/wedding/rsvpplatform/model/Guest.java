@@ -7,10 +7,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.Instant;
 import java.util.UUID;
 
+/**
+ * The root record. One row per phone number — there are no households.
+ *
+ * <p>Two phone columns on purpose: {@code phoneE164} is the canonical unique key, and
+ * {@code phoneDigits} holds the trailing national digits so a guest who types their number
+ * in a different shape than you saved it still resolves. See PhoneNumberService.
+ */
 @Entity
-@Table(name = "guests")
+@Table(name = "guests", uniqueConstraints = @UniqueConstraint(columnNames = "phone_e164"),
+       indexes = @Index(name = "idx_guest_phone_digits", columnList = "phone_digits"))
 @Getter
 @Setter
 @NoArgsConstructor
@@ -22,17 +31,32 @@ public class Guest {
     @GeneratedValue
     private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "family_id", nullable = false)
-    private Family family;
+    @Column(name = "phone_e164", nullable = false)
+    private String phoneE164;
 
-    @Column(nullable = false)
+    /** Trailing digits of the national number, used as a fallback match. */
+    @Column(name = "phone_digits", nullable = false)
+    private String phoneDigits;
+
     private String name;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "meal_pref")
-    private MealPref mealPref;
+    @Column(nullable = false)
+    @Builder.Default
+    private GuestSource source = GuestSource.IMPORTED;
 
-    @Column(name = "dietary_notes")
-    private String dietaryNotes;
+    /** Consent to receive WhatsApp updates. Captured at RSVP, default on. */
+    @Column(name = "whatsapp_consent", nullable = false)
+    @Builder.Default
+    private boolean whatsappConsent = true;
+
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private Instant createdAt;
+
+    @PrePersist
+    void prePersist() {
+        if (createdAt == null) {
+            createdAt = Instant.now();
+        }
+    }
 }

@@ -1,6 +1,5 @@
 package com.wedding.rsvpplatform.repository;
 
-import com.wedding.rsvpplatform.model.EventType;
 import com.wedding.rsvpplatform.model.Rsvp;
 import com.wedding.rsvpplatform.model.RsvpStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,15 +14,16 @@ public interface RsvpRepository extends JpaRepository<Rsvp, UUID> {
 
     Optional<Rsvp> findByGuestIdAndEventId(UUID guestId, UUID eventId);
 
-    @Query("select r from Rsvp r where r.event.type = :eventType")
-    List<Rsvp> findByEventType(@Param("eventType") EventType eventType);
+    List<Rsvp> findByGuestId(UUID guestId);
 
-    @Query("select r from Rsvp r where r.event.type = :eventType and r.status = :status")
-    List<Rsvp> findByEventTypeAndStatus(@Param("eventType") EventType eventType,
-                                         @Param("status") RsvpStatus status);
+    @Query("select r from Rsvp r join fetch r.guest join fetch r.event where r.event.key = :eventKey")
+    List<Rsvp> findByEventKey(@Param("eventKey") String eventKey);
 
-    @Query("select r from Rsvp r where r.guest.family.id = :familyId")
-    List<Rsvp> findByFamilyId(@Param("familyId") UUID familyId);
+    @Query("select r from Rsvp r join fetch r.guest join fetch r.event")
+    List<Rsvp> findAllWithGuestAndEvent();
 
-    List<Rsvp> findByStatus(RsvpStatus status);
+    long countByEventIdAndStatus(UUID eventId, RsvpStatus status);
+
+    @Query("select coalesce(sum(r.headcount), 0) from Rsvp r where r.event.id = :eventId and r.status = :status")
+    long sumHeadcount(@Param("eventId") UUID eventId, @Param("status") RsvpStatus status);
 }

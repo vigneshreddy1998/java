@@ -1,16 +1,27 @@
-export default function Gallery() {
-  const placeholders = Array.from({ length: 6 })
+import { siteConfig } from '../config/siteConfig.js'
 
+export default function Gallery() {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-16">
-      <h1 className="text-4xl font-display text-maroon-500 text-center mb-10">Gallery</h1>
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-        {placeholders.map((_, i) => (
-          <div key={i} className="aspect-square rounded-lg bg-parchment flex items-center justify-center text-ink/30 text-xs">
-            Photo {i + 1}
-          </div>
-        ))}
-      </div>
+    <div className="max-w-2xl mx-auto px-6 py-16 text-center">
+      <h1 className="text-4xl font-display text-maroon-500 mb-4">Gallery</h1>
+
+      {siteConfig.galleryUrl ? (
+        <>
+          <p className="text-ink/60 mb-8">Photos from the celebrations, all in one album.</p>
+          <a
+            href={siteConfig.galleryUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-block px-6 py-3 rounded-lg bg-maroon-500 text-ivory font-medium"
+          >
+            Open the album
+          </a>
+        </>
+      ) : (
+        <p className="text-ink/60">
+          The album isn't up yet — we'll share it here once there are photos worth showing.
+        </p>
+      )}
     </div>
   )
 }

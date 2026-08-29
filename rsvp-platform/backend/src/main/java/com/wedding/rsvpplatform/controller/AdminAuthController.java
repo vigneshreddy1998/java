@@ -35,6 +35,6 @@ public class AdminAuthController {
         if (!passwordEncoder.matches(request.password(), user.getPasswordHash())) {
             throw new UnauthorizedException("Invalid credentials");
         }
-        return new AdminLoginResponse(jwtService.generateToken(user.getUsername(), user.getRole()));
+        return new AdminLoginResponse(jwtService.generateAdminToken(user.getUsername(), user.getRole()));
     }
 }

@@ -6,5 +6,6 @@ public record EventUpdateRequest(
         String name,
         LocalDateTime date,
         String venue,
-        String dressCode
+        String dressCode,
+        String colourTheme
 ) {}

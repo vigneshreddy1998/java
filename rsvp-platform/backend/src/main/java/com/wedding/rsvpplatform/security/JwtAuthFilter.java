@@ -15,7 +15,13 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
+/**
+ * Turns a bearer token into an authenticated principal. Guest tokens produce a
+ * {@link GuestPrincipal} carrying the event keys that guest is allowed to see; admin tokens
+ * produce the username with ROLE_ADMIN.
+ */
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
 
@@ -26,19 +32,29 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     protected void doFilterInternal(@NonNull HttpServletRequest request,
                                      @NonNull HttpServletResponse response,
                                      @NonNull FilterChain filterChain) throws ServletException, IOException {
         String header = request.getHeader("Authorization");
         if (header != null && header.startsWith("Bearer ")) {
-            String token = header.substring(7);
             try {
-                Claims claims = jwtService.parseClaims(token);
-                String username = claims.getSubject();
+                Claims claims = jwtService.parseClaims(header.substring(7));
                 String role = claims.get("role", String.class);
+
+                Object principal;
+                if ("GUEST".equals(role)) {
+                    List<String> eventKeys = claims.get("events", List.class);
+                    principal = new GuestPrincipal(
+                            UUID.fromString(claims.getSubject()),
+                            eventKeys == null ? List.of() : eventKeys);
+                } else {
+                    principal = claims.getSubject();
+                }
+
                 var authorities = List.of(new SimpleGrantedAuthority("ROLE_" + role));
-                var authentication = new UsernamePasswordAuthenticationToken(username, null, authorities);
-                SecurityContextHolder.getContext().setAuthentication(authentication);
+                SecurityContextHolder.getContext().setAuthentication(
+                        new UsernamePasswordAuthenticationToken(principal, null, authorities));
             } catch (JwtException | IllegalArgumentException ignored) {
                 SecurityContextHolder.clearContext();
             }

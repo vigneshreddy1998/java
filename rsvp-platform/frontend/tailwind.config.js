@@ -30,6 +30,20 @@ export default {
           500: '#0F6B52',
           600: '#0B4E3C',
         },
+        // Haldi — turmeric
+        haldi: {
+          50: '#FCF3E3',
+          400: '#D98218',
+          500: '#B5670A',
+          600: '#8C4E06',
+        },
+        // Engagement — deep gold, distinct from the turmeric above
+        engagement: {
+          50: '#F8F1DC',
+          400: '#A98A26',
+          500: '#8A6C17',
+          600: '#6B520F',
+        },
         gold: {
           300: '#E3CA85',
           400: '#C9A227',

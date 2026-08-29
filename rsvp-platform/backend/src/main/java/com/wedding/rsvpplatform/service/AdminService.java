@@ -4,8 +4,6 @@ import com.wedding.rsvpplatform.dto.admin.*;
 import com.wedding.rsvpplatform.exception.NotFoundException;
 import com.wedding.rsvpplatform.model.*;
 import com.wedding.rsvpplatform.repository.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,167 +13,172 @@ import java.util.stream.Collectors;
 @Service
 public class AdminService {
 
-    private static final Logger log = LoggerFactory.getLogger(AdminService.class);
-
-    private final RsvpRepository rsvpRepository;
     private final GuestRepository guestRepository;
-    private final FamilyRepository familyRepository;
-    private final WeddingEventRepository eventRepository;
-    private final FlightDetailRepository flightDetailRepository;
+    private final EventRepository eventRepository;
+    private final RsvpRepository rsvpRepository;
+    private final GuestEventInviteRepository inviteRepository;
+    private final SongRepository songRepository;
+    private final SongPickRepository songPickRepository;
+    private final PhoneNumberService phoneNumberService;
+    private final ContactImportService contactImportService;
 
-    public AdminService(RsvpRepository rsvpRepository, GuestRepository guestRepository,
-                         FamilyRepository familyRepository, WeddingEventRepository eventRepository,
-                         FlightDetailRepository flightDetailRepository) {
-        this.rsvpRepository = rsvpRepository;
+    public AdminService(GuestRepository guestRepository,
+                         EventRepository eventRepository,
+                         RsvpRepository rsvpRepository,
+                         GuestEventInviteRepository inviteRepository,
+                         SongRepository songRepository,
+                         SongPickRepository songPickRepository,
+                         PhoneNumberService phoneNumberService,
+                         ContactImportService contactImportService) {
         this.guestRepository = guestRepository;
-        this.familyRepository = familyRepository;
         this.eventRepository = eventRepository;
-        this.flightDetailRepository = flightDetailRepository;
+        this.rsvpRepository = rsvpRepository;
+        this.inviteRepository = inviteRepository;
+        this.songRepository = songRepository;
+        this.songPickRepository = songPickRepository;
+        this.phoneNumberService = phoneNumberService;
+        this.contactImportService = contactImportService;
     }
 
     @Transactional(readOnly = true)
-    public List<RsvpTrackerRow> tracker(EventType eventType, RsvpStatus status) {
-        List<Rsvp> rsvps = eventType != null
-                ? (status != null ? rsvpRepository.findByEventTypeAndStatus(eventType, status)
-                                   : rsvpRepository.findByEventType(eventType))
-                : rsvpRepository.findAll();
+    public OverviewDto overview() {
+        List<Guest> guests = guestRepository.findAll();
+        List<Rsvp> allRsvps = rsvpRepository.findAllWithGuestAndEvent();
 
-        return rsvps.stream()
-                .filter(r -> status == null || r.getStatus() == status)
-                .map(r -> new RsvpTrackerRow(
-                        r.getGuest().getFamily().getDisplayName(),
-                        r.getGuest().getName(),
-                        r.getEvent().getType(),
-                        r.getStatus(),
-                        r.getGuest().getMealPref(),
-                        r.getGuest().getDietaryNotes(),
-                        r.getPlusOneName(),
-                        r.getPlusOneMealPref()))
-                .toList();
-    }
-
-    @Transactional(readOnly = true)
-    public MealSummaryDto mealSummary(EventType eventType) {
-        List<Rsvp> accepted = rsvpRepository.findByEventTypeAndStatus(eventType, RsvpStatus.ACCEPTED);
-
-        Map<String, Long> counts = new LinkedHashMap<>();
-        List<String> dietaryNotes = new ArrayList<>();
-
-        for (Rsvp r : accepted) {
-            Guest g = r.getGuest();
-            String meal = g.getMealPref() != null ? g.getMealPref().name() : "UNSPECIFIED";
-            counts.merge(meal, 1L, Long::sum);
-            if (g.getDietaryNotes() != null && !g.getDietaryNotes().isBlank()) {
-                dietaryNotes.add(g.getName() + ": " + g.getDietaryNotes());
-            }
-            if (r.getPlusOneName() != null && !r.getPlusOneName().isBlank()) {
-                String plusOneMeal = r.getPlusOneMealPref() != null ? r.getPlusOneMealPref().name() : "UNSPECIFIED";
-                counts.merge(plusOneMeal, 1L, Long::sum);
-            }
-        }
-
-        return new MealSummaryDto(counts, dietaryNotes);
-    }
-
-    @Transactional(readOnly = true)
-    public List<LogisticsRow> logistics() {
-        return flightDetailRepository.findAllByOrderByArrivalDatetimeAsc().stream()
-                .map(d -> new LogisticsRow(
-                        d.getGuest().getFamily().getDisplayName(),
-                        d.getGuest().getName(),
-                        d.getFlightNumber(),
-                        d.getArrivalDatetime(),
-                        d.getAirport(),
-                        d.getPickupNeeded()))
-                .toList();
-    }
-
-    @Transactional(readOnly = true)
-    public List<NonResponderRow> nonResponders() {
-        List<Guest> allGuests = guestRepository.findAll();
-        List<WeddingEvent> events = eventRepository.findAll();
-        List<NonResponderRow> result = new ArrayList<>();
-
-        for (WeddingEvent event : events) {
-            Set<UUID> respondedGuestIds = rsvpRepository.findByEventType(event.getType()).stream()
-                    .filter(r -> r.getStatus() != RsvpStatus.PENDING)
-                    .map(r -> r.getGuest().getId())
-                    .collect(Collectors.toSet());
-
-            for (Guest guest : allGuests) {
-                if (!respondedGuestIds.contains(guest.getId())) {
-                    result.add(new NonResponderRow(guest.getId(), guest.getFamily().getDisplayName(),
-                            guest.getName(), event.getType()));
-                }
-            }
-        }
-        return result;
-    }
-
-    public int sendReminders() {
-        List<NonResponderRow> nonResponders = nonResponders();
-        // No SMS/email provider is wired up yet — this logs the batch so an admin can see who's
-        // outstanding. Wire an actual channel here (email/SMS) when one is chosen.
-        log.info("Reminder batch: {} outstanding RSVP(s) to nudge: {}", nonResponders.size(),
-                nonResponders.stream().map(NonResponderRow::guestName).toList());
-        return nonResponders.size();
-    }
-
-    @Transactional
-    public List<GuestImportResultRow> importGuests(List<GuestImportRow> rows, String frontendOrigin) {
-        Map<String, Family> familiesByName = new LinkedHashMap<>();
-        List<GuestImportResultRow> results = new ArrayList<>();
-
-        for (GuestImportRow row : rows) {
-            if (row.familyName() == null || row.familyName().isBlank() ||
-                row.guestName() == null || row.guestName().isBlank()) {
+        List<OverviewDto.EventStats> stats = new ArrayList<>();
+        for (Event event : eventRepository.findAllByOrderByDisplayOrderAsc()) {
+            if (!event.isCollectsRsvp()) {
                 continue;
             }
+            List<Rsvp> forEvent = allRsvps.stream()
+                    .filter(r -> r.getEvent().getId().equals(event.getId()))
+                    .toList();
 
-            Family family = familiesByName.computeIfAbsent(row.familyName(), name ->
-                    familyRepository.findByDisplayName(name).orElseGet(() ->
-                            familyRepository.save(Family.builder()
-                                    .displayName(name)
-                                    .languagePref(row.languagePref() != null ? row.languagePref() : "en")
-                                    .build())));
+            long invited = event.isRequiresInvite()
+                    ? inviteRepository.findAll().stream()
+                        .filter(i -> i.getEvent().getId().equals(event.getId()))
+                        .count()
+                    : guests.size();
 
-            MealPref mealPref = parseMealPref(row.mealPref());
-            Guest guest = Guest.builder()
-                    .family(family)
-                    .name(row.guestName())
-                    .mealPref(mealPref)
-                    .build();
-            guestRepository.save(guest);
+            long accepted = forEvent.stream().filter(r -> r.getStatus() == RsvpStatus.ACCEPTED).count();
+            long declined = forEvent.stream().filter(r -> r.getStatus() == RsvpStatus.DECLINED).count();
+
+            long headcount = forEvent.stream()
+                    .filter(r -> r.getStatus() == RsvpStatus.ACCEPTED)
+                    .mapToLong(Rsvp::getHeadcount)
+                    .sum();
+
+            Map<String, Long> meals = new LinkedHashMap<>();
+            if (event.isCollectsMeal()) {
+                for (Rsvp r : forEvent) {
+                    if (r.getStatus() != RsvpStatus.ACCEPTED) {
+                        continue;
+                    }
+                    String key = r.getMealPref() != null ? r.getMealPref().name() : "UNSPECIFIED";
+                    meals.merge(key, 1L, Long::sum);
+                }
+            }
+
+            stats.add(new OverviewDto.EventStats(event.getKey(), event.getName(),
+                    accepted, declined, Math.max(0, invited - accepted - declined),
+                    invited, headcount, meals));
         }
 
-        for (Family family : familiesByName.values()) {
-            String link = frontendOrigin + "/rsvp/" + family.getInviteToken();
-            results.add(new GuestImportResultRow(family.getDisplayName(), family.getInviteToken(), link));
-        }
-        return results;
+        int imported = (int) guests.stream().filter(g -> g.getSource() == GuestSource.IMPORTED).count();
+        return new OverviewDto(stats, guests.size(), imported, guests.size() - imported);
     }
 
-    private MealPref parseMealPref(String raw) {
-        if (raw == null || raw.isBlank()) return null;
-        try {
-            return MealPref.valueOf(raw.trim().toUpperCase().replace(' ', '_'));
-        } catch (IllegalArgumentException e) {
-            return MealPref.OTHER;
+    @Transactional(readOnly = true)
+    public List<AdminGuestRow> guests() {
+        List<Rsvp> allRsvps = rsvpRepository.findAllWithGuestAndEvent();
+        Map<UUID, List<Rsvp>> rsvpsByGuest = allRsvps.stream()
+                .collect(Collectors.groupingBy(r -> r.getGuest().getId()));
+
+        Map<UUID, List<String>> invitesByGuest = new HashMap<>();
+        for (GuestEventInvite invite : inviteRepository.findAll()) {
+            invitesByGuest.computeIfAbsent(invite.getGuest().getId(), k -> new ArrayList<>())
+                    .add(invite.getEvent().getKey());
         }
+
+        return guestRepository.findAll().stream()
+                .map(g -> new AdminGuestRow(
+                        g.getId(),
+                        g.getName(),
+                        phoneNumberService.forDisplay(g.getPhoneE164()),
+                        g.getSource(),
+                        invitesByGuest.getOrDefault(g.getId(), List.of()),
+                        rsvpsByGuest.getOrDefault(g.getId(), List.of()).stream()
+                                .map(r -> new AdminRsvpSummary(r.getEvent().getKey(), r.getStatus(),
+                                        r.getHeadcount(), r.getMealPref(), r.getDietaryNotes()))
+                                .toList()))
+                .sorted(Comparator.comparing(row -> row.name() == null ? "￿" : row.name().toLowerCase()))
+                .toList();
     }
 
     @Transactional
-    public EventDtoAdmin updateEvent(EventType type, EventUpdateRequest request) {
-        WeddingEvent event = eventRepository.findByType(type)
+    public void updateInvites(UUID guestId, List<String> eventKeys) {
+        Guest guest = guestRepository.findById(guestId)
+                .orElseThrow(() -> new NotFoundException("Guest not found"));
+        Map<String, Event> eventsByKey = new HashMap<>();
+        eventRepository.findAll().forEach(e -> eventsByKey.put(e.getKey(), e));
+        contactImportService.applyInvites(guest, eventKeys, eventsByKey);
+    }
+
+    /** Moves a self-registered guest onto your real list without touching their RSVP. */
+    @Transactional
+    public void promote(UUID guestId) {
+        Guest guest = guestRepository.findById(guestId)
+                .orElseThrow(() -> new NotFoundException("Guest not found"));
+        guest.setSource(GuestSource.IMPORTED);
+        guestRepository.save(guest);
+    }
+
+    @Transactional(readOnly = true)
+    public List<SongAdminRow> songs() {
+        Map<UUID, List<String>> pickersBySong = new HashMap<>();
+        for (SongPick pick : songPickRepository.findAllWithGuestAndSong()) {
+            String who = pick.getGuest().getName() != null
+                    ? pick.getGuest().getName()
+                    : phoneNumberService.forDisplay(pick.getGuest().getPhoneE164());
+            pickersBySong.computeIfAbsent(pick.getSong().getId(), k -> new ArrayList<>()).add(who);
+        }
+
+        return songRepository.findAll().stream()
+                .map(s -> {
+                    List<String> pickedBy = pickersBySong.getOrDefault(s.getId(), List.of());
+                    return new SongAdminRow(s.getId(), s.getTitle(), s.getPracticeVideoUrl(),
+                            pickedBy, pickedBy.size() > 1);
+                })
+                .toList();
+    }
+
+    @Transactional
+    public Song addSong(String title, String practiceVideoUrl) {
+        return songRepository.save(Song.builder()
+                .title(title)
+                .practiceVideoUrl(practiceVideoUrl)
+                .build());
+    }
+
+    @Transactional
+    public void deleteSong(UUID songId) {
+        songRepository.deleteById(songId);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Event> events() {
+        return eventRepository.findAllByOrderByDisplayOrderAsc();
+    }
+
+    @Transactional
+    public Event updateEvent(String key, EventUpdateRequest request) {
+        Event event = eventRepository.findByKey(key)
                 .orElseThrow(() -> new NotFoundException("Event not found"));
         if (request.name() != null) event.setName(request.name());
         if (request.date() != null) event.setDate(request.date());
         if (request.venue() != null) event.setVenue(request.venue());
         if (request.dressCode() != null) event.setDressCode(request.dressCode());
-        WeddingEvent saved = eventRepository.save(event);
-        return new EventDtoAdmin(saved.getType(), saved.getName(), saved.getDate(), saved.getVenue(), saved.getDressCode());
+        if (request.colourTheme() != null) event.setColourTheme(request.colourTheme());
+        return eventRepository.save(event);
     }
-
-    public record EventDtoAdmin(EventType type, String name, java.time.LocalDateTime date, String venue, String dressCode) {}
-    public record GuestImportRow(String familyName, String guestName, String mealPref, String languagePref) {}
 }

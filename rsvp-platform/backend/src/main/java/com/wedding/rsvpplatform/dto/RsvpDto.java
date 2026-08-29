@@ -1,12 +1,15 @@
 package com.wedding.rsvpplatform.dto;
 
-import com.wedding.rsvpplatform.model.EventType;
 import com.wedding.rsvpplatform.model.MealPref;
 import com.wedding.rsvpplatform.model.RsvpStatus;
 
+import java.util.List;
+
 public record RsvpDto(
-        EventType eventType,
+        String eventKey,
         RsvpStatus status,
-        String plusOneName,
-        MealPref plusOneMealPref
+        int headcount,
+        MealPref mealPref,
+        String dietaryNotes,
+        List<CompanionDto> companions
 ) {}

@@ -1,13 +1,17 @@
 package com.wedding.rsvpplatform.dto;
 
-import com.wedding.rsvpplatform.model.EventType;
-
 import java.time.LocalDateTime;
 
 public record EventDto(
-        EventType type,
+        String key,
         String name,
         LocalDateTime date,
         String venue,
-        String dressCode
+        String dressCode,
+        String colourTheme,
+        boolean collectsRsvp,
+        boolean collectsMeal,
+        boolean collectsSongs,
+        String accent,
+        int displayOrder
 ) {}

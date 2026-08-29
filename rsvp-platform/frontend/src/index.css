@@ -38,11 +38,17 @@
     }
   }
 
-  /* Arch-shaped card mask, used for the event cards on the home page. */
+  /*
+    Arch-shaped card mask.
+
+    preserveAspectRatio="none" is load-bearing: without it an SVG mask defaults to "meet",
+    which letterboxes the shape inside the element instead of stretching to fill it. On a card
+    taller than the viewBox's 3:4 ratio that leaves the bottom strip outside the mask, and
+    whatever sits there — a status line, a countdown pill — silently disappears.
+  */
   .mask-arch {
-    --arch-path: path('M0,400 L0,160 C0,95 45,55 95,38 C115,30 132,16 150,0 C168,16 185,30 205,38 C255,55 300,95 300,160 L300,400 Z');
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Cpath d='M0,400 L0,160 C0,95 45,55 95,38 C115,30 132,16 150,0 C168,16 185,30 205,38 C255,55 300,95 300,160 L300,400 Z' fill='white'/%3E%3C/svg%3E");
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Cpath d='M0,400 L0,160 C0,95 45,55 95,38 C115,30 132,16 150,0 C168,16 185,30 205,38 C255,55 300,95 300,160 L300,400 Z' fill='white'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400' preserveAspectRatio='none'%3E%3Cpath d='M0,400 L0,160 C0,95 45,55 95,38 C115,30 132,16 150,0 C168,16 185,30 205,38 C255,55 300,95 300,160 L300,400 Z' fill='white'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400' preserveAspectRatio='none'%3E%3Cpath d='M0,400 L0,160 C0,95 45,55 95,38 C115,30 132,16 150,0 C168,16 185,30 205,38 C255,55 300,95 300,160 L300,400 Z' fill='white'/%3E%3C/svg%3E");
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
     -webkit-mask-repeat: no-repeat;
