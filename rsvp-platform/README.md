@@ -87,6 +87,22 @@ fine while you are testing and not fine once real guests have replied.
 Once you go live, replace `ddl-auto: update` with real migrations (Flyway or Liquibase)
 so schema changes stop being destructive.
 
+#### `ERROR: no schema has been selected to create in`
+
+If the schema reset above leaves you with this error instead (on the very first
+`CREATE TABLE`), your `postgres` role or the `rsvp_platform` database has a leftover
+`search_path` pointing at a schema that no longer exists — so after `CREATE SCHEMA
+public`, nothing on the path resolves. Fix it once and it stays fixed:
+
+```sql
+ALTER ROLE postgres RESET search_path;
+ALTER DATABASE rsvp_platform RESET search_path;
+ALTER DATABASE rsvp_platform SET search_path TO public;
+GRANT ALL ON SCHEMA public TO postgres;
+```
+
+Restart the backend after running this.
+
 ## 2. Load your guest list
 
 Log in at `/admin/login` with the bootstrap admin credentials, then use the **Import**
