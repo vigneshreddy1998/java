@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #FFFFFF; color: #1B1512;
+           font-family: "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #A11F35; text-decoration: none; }
+    a:hover { color: #7D1729; }
+    .arch { -webkit-mask-image: var(--arch); mask-image: var(--arch);
+            -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
+            -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+  </style>
+</helmet>
+
+<div style="--arch: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400' preserveAspectRatio='none'%3E%3Cpath d='M0,400 L0,160 C0,95 45,55 95,38 C115,30 132,16 150,0 C168,16 185,30 205,38 C255,55 300,95 300,160 L300,400 Z' fill='white'/%3E%3C/svg%3E&quot;); width: 1280px; background: #FFFFFF;">
+
+  <!-- ── Masthead ───────────────────────────────────────────── -->
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 20px 56px; border-bottom: 1px solid rgba(227,202,133,0.4); position: sticky; top: 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);">
+    <span style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 22px; color: #A11F35;">Akshath &amp; Sonalika</span>
+    <nav style="display: flex; align-items: center; gap: 26px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(27,21,18,0.65);">
+      <span style="color: #1B1512; font-weight: 600;">Home</span>
+      <span>Engagement</span>
+      <span>Haldi</span>
+      <span>Sangeet</span>
+      <span>Wedding</span>
+      <span>Gallery</span>
+      <span style="color: rgba(27,21,18,0.35);">Not you?</span>
+    </nav>
+  </header>
+
+  <!-- ── Hero ───────────────────────────────────────────────── -->
+  <section style="position: relative; padding: 84px 56px 76px; text-align: center; background:
+      radial-gradient(1100px 420px at 50% -8%, #FBEFF1 0%, rgba(251,239,241,0) 62%), #FFFFFF;">
+
+    <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: #8A6C17; margin: 0 0 22px;">
+      Welcome back, Ravi
+    </p>
+
+    <h1 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 66px; line-height: 1.04; letter-spacing: -0.028em; margin: 0 auto 20px; max-width: 15ch; text-wrap: balance;">
+      Four days.<br>One family.
+    </h1>
+
+    <p style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 27px; color: #A11F35; margin: 0 0 30px;">
+      Akshath &amp; Sonalika
+    </p>
+
+    <!-- Countdown -->
+    <div style="display: flex; justify-content: center; gap: 44px; margin-bottom: 38px;">
+      <div style="text-align: center;">
+        <div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 40px; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: #A11F35;">78</div>
+        <div style="font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(27,21,18,0.45); margin-top: 4px;">Days</div>
+      </div>
+      <div style="width: 1px; background: rgba(227,202,133,0.5);"></div>
+      <div style="text-align: center;">
+        <div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 40px; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: #A11F35;">15</div>
+        <div style="font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(27,21,18,0.45); margin-top: 4px;">November</div>
+      </div>
+      <div style="width: 1px; background: rgba(227,202,133,0.5);"></div>
+      <div style="text-align: center;">
+        <div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 40px; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: #A11F35;">4</div>
+        <div style="font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(27,21,18,0.45); margin-top: 4px;">Events</div>
+      </div>
+    </div>
+
+    <!-- Outstanding-RSVP prompt: the one action this page wants -->
+    <div style="display: inline-flex; align-items: center; gap: 16px; padding: 13px 15px 13px 22px; border: 1px solid rgba(161,31,53,0.22); background: #FBEFF1; border-radius: 999px;">
+      <span style="font-size: 14px; color: #7D1729;">Two events still need your answer</span>
+      <span style="display: inline-flex; align-items: center; gap: 7px; background: #A11F35; color: #FFFFFF; font-size: 13px; font-weight: 600; padding: 9px 17px; border-radius: 999px;">
+        RSVP now
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </div>
+  </section>
+
+  <!-- ── Events ─────────────────────────────────────────────── -->
+  <section style="padding: 8px 56px 20px; text-align: center;">
+    <div style="display: flex; align-items: center; gap: 18px; max-width: 560px; margin: 0 auto 8px;">
+      <div style="height: 1px; flex-grow: 1; background: rgba(227,202,133,0.55);"></div>
+      <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: #8A6C17; margin: 0; white-space: nowrap;">The celebrations</p>
+      <div style="height: 1px; flex-grow: 1; background: rgba(227,202,133,0.55);"></div>
+    </div>
+    <h2 style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; font-size: 34px; margin: 14px 0 0;">
+      Everything you're invited to
+    </h2>
+  </section>
+
+  <!-- Event cards: arch masked, one per invited event -->
+  <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; padding: 44px 56px 64px;">
+
+    <!-- Engagement -->
+    <div style="position: relative;">
+      <div style="position: absolute; top: -18px; left: 16px; z-index: 2; width: 46px; height: 46px; border-radius: 11px; background: #FFFFFF; box-shadow: 0 10px 40px -12px rgba(27,21,18,0.18); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <span style="font-size: 9px; font-weight: 700; letter-spacing: 0.06em; color: #8A6C17;">TBD</span>
+      </div>
+      <div class="arch" style="box-shadow: 0 16px 36px -8px rgba(27,21,18,0.16); display: flex; flex-direction: column;">
+        <div style="height: 176px; background: linear-gradient(155deg, #F4EFE6, #DCD3C4); display: flex; align-items: flex-end; padding: 12px;">
+          <span style="font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(27,21,18,0.5);">Engagement</span>
+        </div>
+        <div style="background: #8A6C17; color: #FFFFFF; padding: 30px 18px 20px;">
+          <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 18px; margin: 0 0 12px;">The Engagement</h3>
+          <p style="font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.68); margin: 0 0 3px;">When</p>
+          <p style="font-size: 13px; margin: 0 0 11px;">Date coming soon</p>
+          <p style="font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.68); margin: 0 0 3px;">Where</p>
+          <p style="font-size: 13px; margin: 0 0 16px;">Charlotte, NC</p>
+          <p style="font-size: 11px; margin: 0; color: rgba(255,255,255,0.75);">Details only — no RSVP needed</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Haldi -->
+    <div style="position: relative;">
+      <div style="position: absolute; top: -18px; left: 16px; z-index: 2; width: 46px; height: 46px; border-radius: 11px; background: #FFFFFF; box-shadow: 0 10px 40px -12px rgba(27,21,18,0.18); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <span style="font-size: 9px; font-weight: 700; letter-spacing: 0.06em; color: #B5670A;">TBD</span>
+      </div>
+      <div class="arch" style="box-shadow: 0 16px 36px -8px rgba(27,21,18,0.16); display: flex; flex-direction: column;">
+        <div style="height: 176px; background: linear-gradient(155deg, #FCF3E3, #E8D4AE); display: flex; align-items: flex-end; padding: 12px;">
+          <span style="font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(27,21,18,0.5);">Haldi</span>
+        </div>
+        <div style="background: #B5670A; color: #FFFFFF; padding: 30px 18px 20px;">
+          <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 18px; margin: 0 0 12px;">The Haldi</h3>
+          <p style="font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.68); margin: 0 0 3px;">When</p>
+          <p style="font-size: 13px; margin: 0 0 11px;">Date coming soon</p>
+          <p style="font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.68); margin: 0 0 3px;">Wear</p>
+          <p style="font-size: 13px; margin: 0 0 16px;">Yellow &amp; marigold</p>
+          <p style="font-size: 11px; margin: 0; color: rgba(255,255,255,0.75);">Details only — no RSVP needed</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sangeet (gated: only rendered for invited guests) -->
+    <div style="position: relative;">
+      <div style="position: absolute; top: -18px; left: 16px; z-index: 2; width: 46px; height: 46px; border-radius: 11px; background: #FFFFFF; box-shadow: 0 10px 40px -12px rgba(27,21,18,0.18); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <span style="font-size: 9px; font-weight: 700; letter-spacing: 0.06em; color: #0F6B52;">TBD</span>
+      </div>
+      <div class="arch" style="box-shadow: 0 16px 36px -8px rgba(27,21,18,0.16); display: flex; flex-direction: column;">
+        <div style="height: 176px; background: linear-gradient(155deg, #EAF5F0, #BFDCD1); display: flex; align-items: flex-end; padding: 12px; position: relative;">
+          <span style="position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.94); padding: 3px 10px; border-radius: 999px; font-size: 10px; font-weight: 600; color: #0F6B52;">Invited</span>
+          <span style="font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(27,21,18,0.5);">Sangeet</span>
+        </div>
+        <div style="background: #0F6B52; color: #FFFFFF; padding: 30px 18px 20px;">
+          <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 18px; margin: 0 0 12px;">Sangeet Night</h3>
+          <p style="font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.68); margin: 0 0 3px;">When</p>
+          <p style="font-size: 13px; margin: 0 0 11px;">Date coming soon</p>
+          <p style="font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.68); margin: 0 0 3px;">Where</p>
+          <p style="font-size: 13px; margin: 0 0 16px;">Charlotte, NC</p>
+          <p style="font-size: 11px; margin: 0; font-weight: 500;">You're going · 2 attending</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wedding -->
+    <div style="position: relative;">
+      <div style="position: absolute; top: -18px; left: 16px; z-index: 2; width: 46px; height: 46px; border-radius: 11px; background: #FFFFFF; box-shadow: 0 10px 40px -12px rgba(27,21,18,0.18); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <span style="font-size: 8.5px; font-weight: 700; letter-spacing: 0.06em; color: #A11F35;">NOV</span>
+        <span style="font-size: 15px; font-weight: 800; line-height: 1; color: #1B1512;">15</span>
+      </div>
+      <div class="arch" style="box-shadow: 0 16px 36px -8px rgba(27,21,18,0.16); display: flex; flex-direction: column;">
+        <div style="height: 176px; background: linear-gradient(155deg, #FBEFF1, #E4C3C9); display: flex; align-items: flex-end; padding: 12px; position: relative;">
+          <span style="position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.94); padding: 3px 10px; border-radius: 999px; font-size: 10px; font-weight: 600; color: #1B1512;">78 days</span>
+          <span style="font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(27,21,18,0.5);">Wedding</span>
+        </div>
+        <div style="background: #A11F35; color: #FFFFFF; padding: 30px 18px 20px;">
+          <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 18px; margin: 0 0 12px;">The Wedding</h3>
+          <p style="font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.68); margin: 0 0 3px;">When</p>
+          <p style="font-size: 13px; margin: 0 0 11px;">Sun 15 Nov, 10:00 AM</p>
+          <p style="font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.68); margin: 0 0 3px;">Where</p>
+          <p style="font-size: 13px; margin: 0 0 16px;">Charlotte, NC — venue TBA</p>
+          <p style="font-size: 11px; margin: 0; font-weight: 500;">You're going · 3 attending</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Gallery strip ──────────────────────────────────────── -->
+  <section style="padding: 8px 56px 72px;">
+    <div style="border: 1px solid rgba(227,202,133,0.45); border-radius: 16px; padding: 34px 40px; display: flex; align-items: center; justify-content: space-between; gap: 40px; background: #FAF8F5;">
+      <div>
+        <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 20px; margin: 0 0 7px;">Photos from the week</h3>
+        <p style="font-size: 14px; color: #5B5049; margin: 0; max-width: 46ch;">
+          One shared album across all four events. We'll post the link here once there's something worth showing.
+        </p>
+      </div>
+      <span style="white-space: nowrap; border: 1px solid rgba(27,21,18,0.18); padding: 11px 22px; border-radius: 999px; font-size: 13px; font-weight: 600; color: rgba(27,21,18,0.45);">
+        Coming soon
+      </span>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer style="border-top: 1px solid rgba(227,202,133,0.4); padding: 34px 56px 44px; text-align: center;">
+    <div style="width: 54px; height: 1px; background: #C9A227; margin: 0 auto 16px;"></div>
+    <p style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(27,21,18,0.4); margin: 0;">
+      Akshath &amp; Sonalika — 15 November 2026 — Charlotte, NC
+    </p>
+  </footer>
+</div>
+</x-dc>
+</body>
+</html>

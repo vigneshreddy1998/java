@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #FFFFFF; color: #1B1512;
+           font-family: "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #A11F35; text-decoration: none; }
+    a:hover { color: #7D1729; }
+    .lbl { display: block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+           color: rgba(27,21,18,0.5); margin-bottom: 8px; }
+    .fld { border: 1px solid rgba(27,21,18,0.16); border-radius: 10px; padding: 13px 15px;
+           font-size: 15px; background: #FFFFFF; }
+  </style>
+</helmet>
+
+<div style="width: 1280px; background: #FFFFFF;">
+
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 20px 56px; border-bottom: 1px solid rgba(227,202,133,0.4);">
+    <span style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 22px; color: #A11F35;">Akshath &amp; Sonalika</span>
+    <nav style="display: flex; align-items: center; gap: 26px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(27,21,18,0.65);">
+      <span>Home</span><span>Engagement</span><span>Haldi</span><span>Sangeet</span>
+      <span style="color: #A11F35; font-weight: 600;">Wedding</span><span>Gallery</span>
+    </nav>
+  </header>
+
+  <!-- Event banner: the accent identifies which event you're in -->
+  <section style="background: linear-gradient(180deg, #FBEFF1 0%, rgba(251,239,241,0) 100%); padding: 40px 56px 46px; text-align: center; border-bottom: 1px solid rgba(227,202,133,0.3);">
+    <p style="font-size: 12.5px; color: rgba(27,21,18,0.5); margin: 0 0 20px; text-align: left;">← All events</p>
+    <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: #A11F35; margin: 0 0 12px;">Event 4 of 4</p>
+    <h1 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 46px; letter-spacing: -0.025em; color: #A11F35; margin: 0 0 20px;">The Wedding</h1>
+    <div style="display: flex; justify-content: center; gap: 34px; font-size: 14.5px; color: #5B5049;">
+      <span><strong style="color: #1B1512; font-weight: 600;">Sunday 15 November 2026</strong> · 10:00 AM</span>
+      <span style="color: rgba(27,21,18,0.2);">|</span>
+      <span>Charlotte, NC — venue TBA</span>
+      <span style="color: rgba(27,21,18,0.2);">|</span>
+      <span>Formal</span>
+    </div>
+  </section>
+
+  <!-- RSVP form -->
+  <main style="max-width: 720px; margin: 0 auto; padding: 46px 56px 72px;">
+
+    <div style="display: flex; align-items: center; gap: 10px; background: #FAF8F5; border: 1px solid rgba(227,202,133,0.45); border-radius: 10px; padding: 12px 16px; margin-bottom: 30px;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8A6C17" stroke-width="2" aria-hidden="true"><path d="M12 8v5M12 16.5v.5" stroke-linecap="round"/><circle cx="12" cy="12" r="9.5"/></svg>
+      <span style="font-size: 13px; color: #5B5049;">You answered on 22 August — change anything below and save again.</span>
+    </div>
+
+    <!-- Attending -->
+    <div style="margin-bottom: 32px;">
+      <p style="font-size: 17px; font-weight: 600; margin: 0 0 14px;">Will you be joining us?</p>
+      <div style="display: flex; gap: 12px;">
+        <div style="flex-grow: 1; background: #A11F35; color: #FFFFFF; border: 1px solid #A11F35; border-radius: 11px; padding: 15px; text-align: center; font-size: 15px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 9px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M4 12.5l5.5 5.5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Yes, count me in
+        </div>
+        <div style="flex-grow: 1; background: #FFFFFF; color: #1B1512; border: 1px solid rgba(27,21,18,0.18); border-radius: 11px; padding: 15px; text-align: center; font-size: 15px; font-weight: 500;">
+          Sorry, can't make it
+        </div>
+      </div>
+    </div>
+
+    <!-- Headcount -->
+    <div style="margin-bottom: 30px;">
+      <span class="lbl">How many attending, including you?</span>
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <div style="display: flex; align-items: center; border: 1px solid rgba(27,21,18,0.16); border-radius: 10px; overflow: hidden;">
+          <span style="padding: 12px 17px; font-size: 19px; color: rgba(27,21,18,0.4); border-right: 1px solid rgba(27,21,18,0.1);">−</span>
+          <span style="padding: 12px 26px; font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums;">3</span>
+          <span style="padding: 12px 17px; font-size: 19px; color: #A11F35; border-left: 1px solid rgba(27,21,18,0.1);">+</span>
+        </div>
+        <span style="font-size: 13px; color: rgba(27,21,18,0.5);">You, plus two guests</span>
+      </div>
+    </div>
+
+    <!-- Companions -->
+    <div style="margin-bottom: 30px;">
+      <span class="lbl">Who's coming with you? <span style="text-transform: none; letter-spacing: 0; color: rgba(27,21,18,0.4);">(optional — helps with place cards and updates)</span></span>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
+          <div class="fld">Asha Sharma</div>
+          <div class="fld" style="color: rgba(27,21,18,0.75);">+1 704 555 0144</div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
+          <div class="fld">Dev Sharma</div>
+          <div class="fld" style="color: rgba(27,21,18,0.32);">Phone (optional)</div>
+        </div>
+      </div>
+      <p style="font-size: 13px; color: #A11F35; margin: 11px 0 0; font-weight: 500;">+ Add someone</p>
+    </div>
+
+    <!-- Meal -->
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-bottom: 30px;">
+      <div>
+        <span class="lbl">Meal preference</span>
+        <div style="display: flex; gap: 9px;">
+          <div style="flex-grow: 1; border: 1.5px solid #0F6B52; background: #EAF5F0; color: #0B4E3C; border-radius: 10px; padding: 12px; text-align: center; font-size: 14px; font-weight: 600;">Vegetarian</div>
+          <div style="flex-grow: 1; border: 1px solid rgba(27,21,18,0.16); border-radius: 10px; padding: 12px; text-align: center; font-size: 14px;">Non-veg</div>
+        </div>
+      </div>
+      <div>
+        <span class="lbl">Allergies or dietary notes</span>
+        <div class="fld">No nuts, please</div>
+      </div>
+    </div>
+
+    <!-- Consent -->
+    <div style="display: flex; align-items: flex-start; gap: 12px; background: #FAF8F5; border: 1px solid rgba(227,202,133,0.45); border-radius: 11px; padding: 16px 18px; margin-bottom: 30px;">
+      <div style="width: 19px; height: 19px; border-radius: 5px; background: #A11F35; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" aria-hidden="true"><path d="M4 12.5l5.5 5.5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div>
+        <p style="font-size: 14.5px; margin: 0 0 3px; font-weight: 500;">Send me updates on WhatsApp</p>
+        <p style="font-size: 13px; color: #5B5049; margin: 0;">Travel details, timings, and the livestream link. Nothing else.</p>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: center; gap: 9px; background: #C9A227; color: #1B1512; border-radius: 11px; padding: 16px; font-size: 15px; font-weight: 600;">
+      Update my answer
+    </div>
+    <p style="text-align: center; font-size: 12.5px; color: rgba(27,21,18,0.45); margin: 14px 0 0;">
+      You can change this any time before 1 November.
+    </p>
+  </main>
+</div>
+</x-dc>
+</body>
+</html>

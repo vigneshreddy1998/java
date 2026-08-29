@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #FFFFFF; color: #1B1512;
+           font-family: "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #A11F35; text-decoration: none; }
+    a:hover { color: #7D1729; }
+    .sec { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+           font-weight: 700; color: #8A6C17; margin: 0 0 18px; }
+    .swatch { border-radius: 10px; height: 68px; display: flex; align-items: flex-end; padding: 9px 11px; }
+    .hex { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10.5px; }
+  </style>
+</helmet>
+
+<div style="width: 1180px; background: #FFFFFF; padding: 52px 56px 60px;">
+
+  <header style="margin-bottom: 44px;">
+    <h1 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 38px; letter-spacing: -0.025em; margin: 0 0 10px;">Design system</h1>
+    <p style="font-size: 15px; color: #5B5049; margin: 0; max-width: 62ch;">
+      The vocabulary every screen is built from. Values are lifted from
+      <span style="font-family: ui-monospace, monospace; font-size: 13.5px;">frontend/tailwind.config.js</span>, so the designs and the running app stay in step.
+    </p>
+  </header>
+
+  <!-- Event accents ─ the one place colour carries meaning -->
+  <section style="margin-bottom: 46px;">
+    <p class="sec">Event accents — colour identifies the event, nothing else</p>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;">
+      <div>
+        <div class="swatch" style="background: #8A6C17;"><span class="hex" style="color: rgba(255,255,255,0.85);">#8A6C17</span></div>
+        <p style="font-size: 14px; font-weight: 600; margin: 10px 0 2px;">Engagement</p>
+        <p style="font-size: 12.5px; color: #5B5049; margin: 0;">Deep gold</p>
+      </div>
+      <div>
+        <div class="swatch" style="background: #B5670A;"><span class="hex" style="color: rgba(255,255,255,0.85);">#B5670A</span></div>
+        <p style="font-size: 14px; font-weight: 600; margin: 10px 0 2px;">Haldi</p>
+        <p style="font-size: 12.5px; color: #5B5049; margin: 0;">Turmeric</p>
+      </div>
+      <div>
+        <div class="swatch" style="background: #0F6B52;"><span class="hex" style="color: rgba(255,255,255,0.85);">#0F6B52</span></div>
+        <p style="font-size: 14px; font-weight: 600; margin: 10px 0 2px;">Sangeet</p>
+        <p style="font-size: 12.5px; color: #5B5049; margin: 0;">Deep green</p>
+      </div>
+      <div>
+        <div class="swatch" style="background: #A11F35;"><span class="hex" style="color: rgba(255,255,255,0.85);">#A11F35</span></div>
+        <p style="font-size: 14px; font-weight: 600; margin: 10px 0 2px;">Wedding</p>
+        <p style="font-size: 12.5px; color: #5B5049; margin: 0;">Maroon — also the brand</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Neutrals -->
+  <section style="margin-bottom: 46px;">
+    <p class="sec">Ground &amp; ink</p>
+    <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px;">
+      <div>
+        <div class="swatch" style="background: #FFFFFF; border: 1px solid rgba(27,21,18,0.12);"><span class="hex" style="color: rgba(27,21,18,0.55);">#FFFFFF</span></div>
+        <p style="font-size: 12.5px; margin: 9px 0 0;">Page</p>
+      </div>
+      <div>
+        <div class="swatch" style="background: #FAF8F5; border: 1px solid rgba(27,21,18,0.08);"><span class="hex" style="color: rgba(27,21,18,0.55);">#FAF8F5</span></div>
+        <p style="font-size: 12.5px; margin: 9px 0 0;">Surface</p>
+      </div>
+      <div>
+        <div class="swatch" style="background: #F4EFE6;"><span class="hex" style="color: rgba(27,21,18,0.55);">#F4EFE6</span></div>
+        <p style="font-size: 12.5px; margin: 9px 0 0;">Parchment</p>
+      </div>
+      <div>
+        <div class="swatch" style="background: #DCD3C4;"><span class="hex" style="color: rgba(27,21,18,0.6);">#DCD3C4</span></div>
+        <p style="font-size: 12.5px; margin: 9px 0 0;">Sand</p>
+      </div>
+      <div>
+        <div class="swatch" style="background: #5B5049;"><span class="hex" style="color: rgba(255,255,255,0.8);">#5B5049</span></div>
+        <p style="font-size: 12.5px; margin: 9px 0 0;">Muted text</p>
+      </div>
+      <div>
+        <div class="swatch" style="background: #1B1512;"><span class="hex" style="color: rgba(255,255,255,0.8);">#1B1512</span></div>
+        <p style="font-size: 12.5px; margin: 9px 0 0;">Ink</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Type -->
+  <section style="margin-bottom: 46px;">
+    <p class="sec">Typography — three faces, each with one job</p>
+    <div style="display: flex; flex-direction: column; gap: 22px;">
+      <div style="display: flex; align-items: baseline; gap: 26px; border-bottom: 1px solid rgba(227,202,133,0.4); padding-bottom: 18px;">
+        <span style="width: 172px; flex-shrink: 0; font-size: 12px; color: rgba(27,21,18,0.45);">Bricolage Grotesque<br>800 · headings</span>
+        <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 40px; letter-spacing: -0.025em;">Four days. One family.</span>
+      </div>
+      <div style="display: flex; align-items: baseline; gap: 26px; border-bottom: 1px solid rgba(227,202,133,0.4); padding-bottom: 18px;">
+        <span style="width: 172px; flex-shrink: 0; font-size: 12px; color: rgba(27,21,18,0.45);">Instrument Serif<br>italic · the couple, section leads</span>
+        <span style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 34px; color: #A11F35;">Akshath &amp; Sonalika</span>
+      </div>
+      <div style="display: flex; align-items: baseline; gap: 26px;">
+        <span style="width: 172px; flex-shrink: 0; font-size: 12px; color: rgba(27,21,18,0.45);">Inter<br>400/500/600 · everything else</span>
+        <span style="font-size: 16px; max-width: 46ch; line-height: 1.6;">Body copy, form labels and controls. Kept to three weights so the hierarchy comes from size and colour, not from weight soup.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Controls -->
+  <section style="margin-bottom: 46px;">
+    <p class="sec">Controls</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center;">
+      <span style="background: #A11F35; color: #FFFFFF; border-radius: 11px; padding: 14px 26px; font-size: 15px; font-weight: 600;">Primary</span>
+      <span style="background: #C9A227; color: #1B1512; border-radius: 11px; padding: 14px 26px; font-size: 15px; font-weight: 600;">Save / commit</span>
+      <span style="border: 1px solid rgba(27,21,18,0.18); border-radius: 11px; padding: 14px 26px; font-size: 15px; font-weight: 500;">Secondary</span>
+      <span style="border: 1.5px solid #0F6B52; background: #EAF5F0; color: #0B4E3C; border-radius: 10px; padding: 12px 22px; font-size: 14px; font-weight: 600;">Selected</span>
+      <span style="border: 1px solid rgba(27,21,18,0.16); border-radius: 10px; padding: 13px 20px; font-size: 15px; color: rgba(27,21,18,0.32);">Placeholder</span>
+    </div>
+    <p style="font-size: 13.5px; color: #5B5049; margin: 18px 0 0; max-width: 68ch;">
+      Gold is reserved for the commit action at the end of a form; maroon for navigation and primary
+      actions elsewhere. Selected states borrow the accent of the event you're on, which is why the
+      same control reads green on the Sangeet and maroon on the Wedding.
+    </p>
+  </section>
+
+  <!-- Motif -->
+  <section>
+    <p class="sec">The arch</p>
+    <div style="display: flex; gap: 34px; align-items: flex-start;">
+      <div style="width: 168px; height: 224px; flex-shrink: 0;
+                  -webkit-mask-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400' preserveAspectRatio='none'%3E%3Cpath d='M0,400 L0,160 C0,95 45,55 95,38 C115,30 132,16 150,0 C168,16 185,30 205,38 C255,55 300,95 300,160 L300,400 Z' fill='white'/%3E%3C/svg%3E&quot;);
+                  mask-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400' preserveAspectRatio='none'%3E%3Cpath d='M0,400 L0,160 C0,95 45,55 95,38 C115,30 132,16 150,0 C168,16 185,30 205,38 C255,55 300,95 300,160 L300,400 Z' fill='white'/%3E%3C/svg%3E&quot;);
+                  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
+                  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+                  background: linear-gradient(160deg, #F4EFE6 0%, #DCD3C4 55%, #A11F35 55%, #A11F35 100%);"></div>
+      <div style="max-width: 60ch;">
+        <p style="font-size: 15px; line-height: 1.65; margin: 0 0 14px;">
+          The single repeated motif — a pointed arch masking each event card. It carries the
+          celebration's character without leaning on ornament, and it is the one shape a guest
+          will remember from the site.
+        </p>
+        <p style="font-size: 13.5px; color: #5B5049; margin: 0 0 10px;">
+          The mask must carry <span style="font-family: ui-monospace, monospace; font-size: 12.5px;">preserveAspectRatio="none"</span>.
+          Without it an SVG mask defaults to <span style="font-family: ui-monospace, monospace; font-size: 12.5px;">meet</span>,
+          letterboxes inside its box, and silently clips whatever sits at the bottom of a card.
+        </p>
+        <p style="font-size: 13.5px; color: #5B5049; margin: 0;">
+          Anything that must escape the shape — the floating date chip — is a sibling of the masked
+          element, never a child of it.
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+</x-dc>
+</body>
+</html>

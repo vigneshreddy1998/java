@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #FFFFFF; color: #1B1512;
+           font-family: "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #0F6B52; text-decoration: none; }
+    a:hover { color: #0B4E3C; }
+    .lbl { display: block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+           color: rgba(27,21,18,0.5); margin-bottom: 8px; }
+    .fld { border: 1px solid rgba(27,21,18,0.16); border-radius: 10px; padding: 13px 15px;
+           font-size: 15px; background: #FFFFFF; }
+  </style>
+</helmet>
+
+<div style="width: 1280px; background: #FFFFFF;">
+
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 20px 56px; border-bottom: 1px solid rgba(227,202,133,0.4);">
+    <span style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 22px; color: #A11F35;">Akshath &amp; Sonalika</span>
+    <nav style="display: flex; align-items: center; gap: 26px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(27,21,18,0.65);">
+      <span>Home</span><span>Engagement</span><span>Haldi</span>
+      <span style="color: #0F6B52; font-weight: 600;">Sangeet</span><span>Wedding</span><span>Gallery</span>
+    </nav>
+  </header>
+
+  <section style="background: linear-gradient(180deg, #EAF5F0 0%, rgba(234,245,240,0) 100%); padding: 40px 56px 46px; text-align: center; border-bottom: 1px solid rgba(227,202,133,0.3);">
+    <p style="font-size: 12.5px; color: rgba(27,21,18,0.5); margin: 0 0 20px; text-align: left;">← All events</p>
+    <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(15,107,82,0.1); color: #0B4E3C; padding: 5px 13px; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke-linecap="round"/></svg>
+      By invitation
+    </div>
+    <h1 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 46px; letter-spacing: -0.025em; color: #0F6B52; margin: 0 0 20px;">Sangeet Night</h1>
+    <div style="display: flex; justify-content: center; gap: 34px; font-size: 14.5px; color: #5B5049;">
+      <span><strong style="color: #1B1512; font-weight: 600;">Date coming soon</strong></span>
+      <span style="color: rgba(27,21,18,0.2);">|</span>
+      <span>Charlotte, NC</span>
+      <span style="color: rgba(27,21,18,0.2);">|</span>
+      <span>Festive / Indian formal</span>
+    </div>
+  </section>
+
+  <main style="max-width: 720px; margin: 0 auto; padding: 46px 56px 72px;">
+
+    <!-- Attending -->
+    <div style="margin-bottom: 32px;">
+      <p style="font-size: 17px; font-weight: 600; margin: 0 0 6px;">Will you be joining us?</p>
+      <p style="font-size: 13.5px; color: #5B5049; margin: 0 0 14px;">Separate from the wedding — come to one, both, or neither.</p>
+      <div style="display: flex; gap: 12px;">
+        <div style="flex-grow: 1; background: #0F6B52; color: #FFFFFF; border: 1px solid #0F6B52; border-radius: 11px; padding: 15px; text-align: center; font-size: 15px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 9px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M4 12.5l5.5 5.5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Yes, count me in
+        </div>
+        <div style="flex-grow: 1; background: #FFFFFF; color: #1B1512; border: 1px solid rgba(27,21,18,0.18); border-radius: 11px; padding: 15px; text-align: center; font-size: 15px; font-weight: 500;">
+          Sorry, can't make it
+        </div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-bottom: 34px;">
+      <div>
+        <span class="lbl">How many attending?</span>
+        <div style="display: flex; align-items: center; border: 1px solid rgba(27,21,18,0.16); border-radius: 10px; overflow: hidden; width: fit-content;">
+          <span style="padding: 12px 17px; font-size: 19px; color: rgba(27,21,18,0.4); border-right: 1px solid rgba(27,21,18,0.1);">−</span>
+          <span style="padding: 12px 26px; font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums;">2</span>
+          <span style="padding: 12px 17px; font-size: 19px; color: #0F6B52; border-left: 1px solid rgba(27,21,18,0.1);">+</span>
+        </div>
+      </div>
+      <div>
+        <span class="lbl">Meal preference</span>
+        <div style="display: flex; gap: 9px;">
+          <div style="flex-grow: 1; border: 1px solid rgba(27,21,18,0.16); border-radius: 10px; padding: 12px; text-align: center; font-size: 14px;">Vegetarian</div>
+          <div style="flex-grow: 1; border: 1.5px solid #0F6B52; background: #EAF5F0; color: #0B4E3C; border-radius: 10px; padding: 12px; text-align: center; font-size: 14px; font-weight: 600;">Non-veg</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Song picker: the thing that makes this page different -->
+    <div style="border-top: 1px solid rgba(227,202,133,0.5); padding-top: 30px; margin-bottom: 30px;">
+      <p style="font-size: 17px; font-weight: 600; margin: 0 0 6px;">Pick songs to perform</p>
+      <p style="font-size: 13.5px; color: #5B5049; margin: 0 0 18px;">
+        Choose as many as you like. Songs aren't reserved — if someone else picks the same one, we'll sort it out with you both.
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+
+        <!-- selected -->
+        <div style="display: flex; align-items: center; gap: 14px; border: 1.5px solid #0F6B52; background: #EAF5F0; border-radius: 11px; padding: 15px 17px;">
+          <div style="width: 19px; height: 19px; border-radius: 5px; background: #0F6B52; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" aria-hidden="true"><path d="M4 12.5l5.5 5.5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div style="flex-grow: 1;">
+            <p style="font-size: 15px; font-weight: 600; margin: 0 0 3px;">Kala Chashma</p>
+            <p style="font-size: 12.5px; color: #0B4E3C; margin: 0;">Practice video ·  3 min 42 s</p>
+          </div>
+          <span style="font-size: 11px; font-weight: 600; color: #B5670A; background: #FCF3E3; padding: 4px 10px; border-radius: 999px; white-space: nowrap;">Also picked by 1 other</span>
+        </div>
+
+        <!-- unselected -->
+        <div style="display: flex; align-items: center; gap: 14px; border: 1px solid rgba(27,21,18,0.14); border-radius: 11px; padding: 15px 17px;">
+          <div style="width: 19px; height: 19px; border-radius: 5px; border: 1.5px solid rgba(27,21,18,0.22); flex-shrink: 0;"></div>
+          <div style="flex-grow: 1;">
+            <p style="font-size: 15px; font-weight: 500; margin: 0 0 3px;">Nagada Sang Dhol</p>
+            <p style="font-size: 12.5px; color: #0F6B52; margin: 0;">Practice video · 4 min 05 s</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 14px; border: 1px solid rgba(27,21,18,0.14); border-radius: 11px; padding: 15px 17px;">
+          <div style="width: 19px; height: 19px; border-radius: 5px; border: 1.5px solid rgba(27,21,18,0.22); flex-shrink: 0;"></div>
+          <div style="flex-grow: 1;">
+            <p style="font-size: 15px; font-weight: 500; margin: 0 0 3px;">London Thumakda</p>
+            <p style="font-size: 12.5px; color: rgba(27,21,18,0.4); margin: 0;">No practice video yet</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 12px; background: #FAF8F5; border: 1px solid rgba(227,202,133,0.45); border-radius: 11px; padding: 16px 18px; margin-bottom: 30px;">
+      <div style="width: 19px; height: 19px; border-radius: 5px; background: #0F6B52; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" aria-hidden="true"><path d="M4 12.5l5.5 5.5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div>
+        <p style="font-size: 14.5px; margin: 0 0 3px; font-weight: 500;">Send me updates on WhatsApp</p>
+        <p style="font-size: 13px; color: #5B5049; margin: 0;">Rehearsal times and the practice playlist.</p>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: center; gap: 9px; background: #C9A227; color: #1B1512; border-radius: 11px; padding: 16px; font-size: 15px; font-weight: 600;">
+      Save my answer
+    </div>
+  </main>
+</div>
+</x-dc>
+</body>
+</html>
